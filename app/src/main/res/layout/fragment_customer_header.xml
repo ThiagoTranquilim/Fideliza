@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#001f3f"
+    android:padding="16dp">
+
+    <!-- Imagem e Informações do Cliente -->
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/baseline_account_circle_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvClientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[Cliente]"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/ivProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/tvClientCPF"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="[CPF: xxx.xxx.xxx-xx]"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@id/ivProfile"
+        app:layout_constraintTop_toBottomOf="@id/tvClientName"
+        android:layout_marginStart="8dp" />
+
+    <!-- Botões -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnFidelityCards"
+        style="@style/containedButtonPurple2"
+        android:text="Meus Cartões Fidelidade"
+        app:layout_constraintTop_toBottomOf="@id/tvClientCPF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnRewards"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="45dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRewards"
+        android:text="Minhas Recompensas"
+        style="@style/containedButtonGreen"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvClientCPF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnFidelityCards"
+        android:layout_marginEnd="45dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

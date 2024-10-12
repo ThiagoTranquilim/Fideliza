@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.empresa.RewardManagementFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="#E0E0E0">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gerenciar Recompensas"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Campo Selos -->
+        <TextView
+            android:id="@+id/tvSelos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selos"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="32dp"/>
+
+        <EditText
+            android:id="@+id/etSelos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            app:layout_constraintTop_toBottomOf="@id/tvSelos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/etValidade"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Campo Validade -->
+        <TextView
+            android:id="@+id/tvValidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Validade"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toEndOf="@id/etSelos"
+            android:layout_marginTop="32dp"/>
+
+        <EditText
+            android:id="@+id/etValidade"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            app:layout_constraintTop_toBottomOf="@id/tvValidade"
+            app:layout_constraintStart_toEndOf="@id/etSelos"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Campo Recompensa -->
+        <TextView
+            android:id="@+id/tvRecompensa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recompensa"
+            app:layout_constraintTop_toBottomOf="@id/etSelos"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/etRecompensa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Descrição da Recompensa"
+            app:layout_constraintTop_toBottomOf="@id/tvRecompensa"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Botão Salvar Mecânica -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSalvarMecanica"
+            style="@style/containedButtonPurple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salvar Mecânica"
+            app:layout_constraintTop_toBottomOf="@id/etRecompensa"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

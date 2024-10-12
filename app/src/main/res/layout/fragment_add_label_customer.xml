@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.empresa.AddLabelCustomer">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="#E0E0E0">
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar Selos Clientes"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!-- Ícone do cliente e nome -->
+        <ImageView
+            android:id="@+id/ivClienteIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/baseline_account_circle_black_24"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <TextView
+            android:id="@+id/tvNomeCliente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="[NOME CLIENTE]"
+            android:textSize="16sp"
+            app:layout_constraintTop_toTopOf="@id/ivClienteIcon"
+            app:layout_constraintStart_toEndOf="@id/ivClienteIcon"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"/>
+
+        <!-- Linhas placeholder para detalhes do cliente -->
+        <View
+            android:id="@+id/line1"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@drawable/line_placeholder"
+            app:layout_constraintTop_toBottomOf="@id/tvNomeCliente"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="45dp"/>
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@drawable/line_placeholder"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="45dp"/>
+
+        <!-- Selos -->
+        <GridLayout
+            android:id="@+id/gridLayoutSelos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:rowCount="2"
+            app:layout_constraintTop_toBottomOf="@id/line2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp">
+
+            <!-- Exemplo de selo selecionado -->
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/baseline_check_box_24"
+                android:layout_margin="8dp"/>
+
+            <!-- Exemplo de selo não selecionado -->
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/baseline_crop_square_24"
+                android:layout_margin="8dp"/>
+
+            <!-- Repetir conforme necessário -->
+
+        </GridLayout>
+
+        <!-- Campos de entrada de valor, data e descrição -->
+        <EditText
+            android:id="@+id/etValor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Valor"
+            android:inputType="numberDecimal"
+            app:layout_constraintTop_toBottomOf="@id/gridLayoutSelos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/etData"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"/>
+
+        <EditText
+            android:id="@+id/etData"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Data"
+            android:inputType="date"
+            app:layout_constraintTop_toBottomOf="@id/gridLayoutSelos"
+            app:layout_constraintStart_toEndOf="@id/etValor"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/etDescricao"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Descrição"
+            app:layout_constraintTop_toBottomOf="@id/etValor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Botão Lançar Selo -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLancarSelo"
+            style="@style/containedButtonPurple"
+            android:layout_height="wrap_content"
+            android:text="Lançar Selo"
+            app:layout_constraintTop_toBottomOf="@id/etDescricao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Botão Voltar -->
+        <TextView
+            android:id="@+id/btnVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voltar"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/btnLancarSelo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

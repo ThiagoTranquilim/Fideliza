@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="br.com.fideliza.ui.common.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_homeFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="br.com.fideliza.ui.common.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_recoverPassword"
+            app:destination="@id/recoverPassword" />
+        <action
+            android:id="@+id/action_loginFragment_to_companyProfile"
+            app:destination="@id/companyMenu" />
+        <action
+            android:id="@+id/action_loginFragment_to_customerMenuFragment"
+            app:destination="@id/customerMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="br.com.fideliza.ui.common.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recoverPassword"
+        android:name="br.com.fideliza.ui.common.RecoverPassword"
+        android:label="fragment_recover_password"
+        tools:layout="@layout/fragment_recover_password" />
+    <fragment
+        android:id="@+id/verificationFragment"
+        android:name="br.com.fideliza.ui.common.VerificationFragment"
+        android:label="fragment_verification"
+        tools:layout="@layout/fragment_verification">
+        <action
+            android:id="@+id/action_verificationFragment_to_SMSReception"
+            app:destination="@id/SMSReception" />
+    </fragment>
+    <fragment
+        android:id="@+id/SMSReception"
+        android:name="br.com.fideliza.ui.common.SMSReception"
+        android:label="fragment_sms_reception"
+        tools:layout="@layout/fragment_sms_reception">
+        <action
+            android:id="@+id/action_SMSReception_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyMenu"
+        android:name="br.com.fideliza.ui.empresa.CompanyMenu"
+        android:label="fragment_company_menu"
+        tools:layout="@layout/fragment_company_menu">
+        <action
+            android:id="@+id/action_companyMenu_to_companyProfile"
+            app:destination="@id/companyProfile" />
+        <action
+            android:id="@+id/action_companyMenu_to_registerNewCustomerFragment"
+            app:destination="@id/registerNewCustomerFragment" />
+        <action
+            android:id="@+id/action_companyMenu_to_addCustomerLabelFragment"
+            app:destination="@id/addCustomerLabelFragment" />
+        <action
+            android:id="@+id/action_companyMenu_to_rewardManagementFragment"
+            app:destination="@id/rewardManagementFragment" />
+        <action
+            android:id="@+id/action_companyMenu_to_viewLoyaltyFragment"
+            app:destination="@id/viewLoyaltyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyProfile"
+        android:name="br.com.fideliza.ui.empresa.CompanyProfile"
+        android:label="fragment_company_profile"
+        tools:layout="@layout/fragment_company_profile" />
+    <fragment
+        android:id="@+id/registerNewCustomerFragment"
+        android:name="br.com.fideliza.ui.empresa.RegisterNewCustomerFragment"
+        android:label="fragment_register_new_customer"
+        tools:layout="@layout/fragment_register_new_customer" />
+
+
+    <fragment
+        android:id="@+id/addCustomerLabelFragment"
+        android:name="br.com.fideliza.ui.empresa.AddCustomerLabelFragment"
+        android:label="AddCustomerLabelFragment"
+        tools:layout="@layout/fragment_add_customer_label">
+        <action
+            android:id="@+id/action_addCustomerLabelFragment_to_addLabelCustomer"
+            app:destination="@id/addLabelCustomerFragment">
+            <argument
+                android:name="clienteNome"
+                app:argType="string"/>
+        </action>
+        <action
+            android:id="@+id/action_addCustomerLabelFragment_to_companyMenu"
+            app:destination="@id/companyMenu" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addLabelCustomerFragment"
+        android:name="br.com.fideliza.ui.empresa.AddLabelCustomer"
+        android:label="AddLabelCustomerFragment"
+        tools:layout="@layout/fragment_add_label_customer">
+        <argument
+            android:name="clienteNome"
+            app:argType="string"/>
+        <action
+            android:id="@+id/action_addLabelCustomerFragment_to_tokenValidationCustomerFragment"
+            app:destination="@id/tokenValidationCustomerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tokenValidationCustomerFragment"
+        android:name="br.com.fideliza.ui.empresa.TokenValidationCustomerFragment"
+        android:label="fragment_token_validation_customer"
+        tools:layout="@layout/fragment_token_validation_customer" />
+    <fragment
+        android:id="@+id/rewardManagementFragment"
+        android:name="br.com.fideliza.ui.empresa.RewardManagementFragment"
+        android:label="fragment_reward_management"
+        tools:layout="@layout/fragment_reward_management" />
+    <fragment
+        android:id="@+id/viewLoyaltyFragment"
+        android:name="br.com.fideliza.ui.empresa.ViewLoyaltyFragment"
+        android:label="fragment_view_loyalty"
+        tools:layout="@layout/fragment_view_loyalty" />
+    <fragment
+        android:id="@+id/customerMenuFragment"
+        android:name="br.com.fideliza.CustomerMenuFragment"
+        android:label="fragment_customer_menu"
+        tools:layout="@layout/fragment_customer_menu" >
+        <action
+            android:id="@+id/action_customerMenuFragment_to_customerHeaderFragment"
+            app:destination="@id/customerHeaderFragment" />
+        <action
+            android:id="@+id/action_customerMenuFragment_to_customerContentFragment"
+            app:destination="@id/customerContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerHeaderFragment"
+        android:name="br.com.fideliza.CustomerHeaderFragment"
+        android:label="fragment_customer_header2"
+        tools:layout="@layout/fragment_customer_header" >
+        <action
+            android:id="@+id/action_customerHeaderFragment_to_fidelityCardsFragment"
+            app:destination="@id/fidelityCardsFragment" />
+        <action
+            android:id="@+id/action_customerHeaderFragment_to_rewardsFragment"
+            app:destination="@id/rewardsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customerContentFragment"
+        android:name="br.com.fideliza.CustomerContentFragment"
+        android:label="fragment_customer_content"
+        tools:layout="@layout/fragment_customer_content" />
+    <fragment
+        android:id="@+id/fidelityCardsFragment"
+        android:name="br.com.fideliza.FidelityCardsFragment"
+        android:label="fragment_fidelity_cards"
+        tools:layout="@layout/fragment_fidelity_cards" />
+    <fragment
+        android:id="@+id/rewardsFragment"
+        android:name="br.com.fideliza.RewardsFragment"
+        android:label="fragment_rewards"
+        tools:layout="@layout/fragment_rewards" />
+</navigation>

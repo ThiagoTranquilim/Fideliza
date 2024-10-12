@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="8dp">
+
+    <!-- Imagem do item de fidelidade -->
+    <ImageView
+        android:id="@+id/imageViewFidelidade"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_placeholder_image" />
+
+    <!-- Descrição ou placeholder do item -->
+    <View
+        android:id="@+id/linePlaceholder"
+        android:layout_width="80dp"
+        android:layout_height="8dp"
+        android:background="@drawable/line_placeholder"/>
+
+</LinearLayout>
