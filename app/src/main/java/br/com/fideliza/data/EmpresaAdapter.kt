@@ -7,15 +7,25 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fideliza.R
+import br.com.fideliza.data.Empresa
 
-data class Company(val logo: Int, val name: String, val description: String)
-
-class CompanyAdapter(private val companies: List<Company>) : RecyclerView.Adapter<CompanyAdapter.CompanyViewHolder>() {
+class EmpresaAdapter(private val empresas: List<Empresa>, private val onItemClick: (Empresa) -> Unit) :
+    RecyclerView.Adapter<EmpresaAdapter.CompanyViewHolder>() {
 
     inner class CompanyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val companyLogo: ImageView = itemView.findViewById(R.id.ivCompanyLogo)
         val companyName: TextView = itemView.findViewById(R.id.tvCompanyName)
         val companyDescription: TextView = itemView.findViewById(R.id.tvCompanyDescription)
+
+        fun bind(empresa: Empresa) {
+            companyLogo.setImageResource(empresa.logo)
+            companyName.text = empresa.name
+            companyDescription.text = empresa.description
+
+            itemView.setOnClickListener {
+                onItemClick(empresa)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyViewHolder {
@@ -24,11 +34,9 @@ class CompanyAdapter(private val companies: List<Company>) : RecyclerView.Adapte
     }
 
     override fun onBindViewHolder(holder: CompanyViewHolder, position: Int) {
-        val company = companies[position]
-        holder.companyLogo.setImageResource(company.logo) // Usando uma imagem drawable
-        holder.companyName.text = company.name
-        holder.companyDescription.text = company.description
+        val empresa = empresas[position]
+        holder.bind(empresa)
     }
 
-    override fun getItemCount(): Int = companies.size
+    override fun getItemCount(): Int = empresas.size
 }

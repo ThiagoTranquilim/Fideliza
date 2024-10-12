@@ -1,24 +1,22 @@
-package br.com.fideliza.ui.empresa
+package br.com.fideliza.ui.common
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import br.com.fideliza.databinding.FragmentCompanyProfileBinding
-import br.com.fideliza.databinding.FragmentHomeBinding
+import br.com.fideliza.databinding.FragmentProfileBinding
 
-class CompanyProfile : Fragment() {
+class Profile : Fragment() {
 
-    private var _binding: FragmentCompanyProfileBinding? = null
+    private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCompanyProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 

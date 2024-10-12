@@ -75,7 +75,7 @@
         tools:layout="@layout/fragment_company_menu">
         <action
             android:id="@+id/action_companyMenu_to_companyProfile"
-            app:destination="@id/companyProfile" />
+            app:destination="@id/Profile" />
         <action
             android:id="@+id/action_companyMenu_to_registerNewCustomerFragment"
             app:destination="@id/registerNewCustomerFragment" />
@@ -90,10 +90,10 @@
             app:destination="@id/viewLoyaltyFragment" />
     </fragment>
     <fragment
-        android:id="@+id/companyProfile"
-        android:name="br.com.fideliza.ui.empresa.CompanyProfile"
-        android:label="fragment_company_profile"
-        tools:layout="@layout/fragment_company_profile" />
+        android:id="@+id/Profile"
+        android:name="br.com.fideliza.ui.common.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/registerNewCustomerFragment"
         android:name="br.com.fideliza.ui.empresa.RegisterNewCustomerFragment"
@@ -156,6 +156,9 @@
         <action
             android:id="@+id/action_customerMenuFragment_to_customerContentFragment"
             app:destination="@id/customerContentFragment" />
+        <action
+            android:id="@+id/action_customerMenuFragment_to_Profile"
+            app:destination="@id/Profile" />
     </fragment>
     <fragment
         android:id="@+id/customerHeaderFragment"

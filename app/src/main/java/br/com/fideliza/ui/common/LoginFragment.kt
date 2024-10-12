@@ -30,7 +30,7 @@ class LoginFragment : Fragment() {
         // Aqui devemos verificar que tipo de usuário se conectou e então determinar qual fragment devemos abrir company ou customer
         binding.btnEntrar.setOnClickListener {
 
-            findNavController().navigate(R.id.action_loginFragment_to_companyProfile)
+            findNavController().navigate(R.id.action_loginFragment_to_customerMenuFragment)
         }
 
 

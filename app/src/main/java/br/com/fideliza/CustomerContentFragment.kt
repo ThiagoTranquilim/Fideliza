@@ -2,10 +2,9 @@ package br.com.fideliza
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.fragment.findNavController
 
 class CustomerContentFragment : Fragment(R.layout.fragment_customer_content) {
 
@@ -15,7 +14,8 @@ class CustomerContentFragment : Fragment(R.layout.fragment_customer_content) {
         val btnProfile = view.findViewById<Button>(R.id.btnProfile)
 
         btnProfile.setOnClickListener {
-            // Ação ao clicar em "Meu Perfil"
+            // Navegar para o Profile usando o método do fragmento pai
+            (parentFragment as? CustomerMenuFragment)?.navigateToProfile()
         }
     }
 }
