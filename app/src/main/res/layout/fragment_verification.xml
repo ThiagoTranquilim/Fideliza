@@ -18,7 +18,7 @@
             android:id="@+id/tvSecurityMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Escolha a melhor forma de Verificação de Segurança da sua Conta"
+            android:text="Sua conta foi criada! \n\n Por favor, verifique sua caixa de entrada para confirmar o e-mail."
             android:textSize="20sp"
             android:textColor="#000000"
             android:textAlignment="center"
@@ -28,31 +28,38 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="45dp"
             android:layout_marginEnd="45dp"
-            android:layout_marginTop="45dp"/>
+            android:layout_marginTop="225dp" />
 
-        <!-- CheckBox para E-mail -->
-        <CheckBox
-            android:id="@+id/checkBoxEmail"
+        <!-- RadioGroup para opções de verificação
+
+
+        <RadioGroup
+            android:id="@+id/radioGroupVerification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-mail"
             app:layout_constraintTop_toBottomOf="@id/tvSecurityMessage"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="100dp"
-            android:layout_marginStart="45dp"/>
+            android:layout_marginStart="45dp">
 
-        <!-- CheckBox para SMS -->
-        <CheckBox
-            android:id="@+id/checkBoxSMS"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SMS"
-            app:layout_constraintTop_toBottomOf="@id/checkBoxEmail"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="16dp"/>
+             RadioButton para E-mail
+            <RadioButton
+                android:id="@+id/radioButtonEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail" />
 
-        <!-- Botão Verificar -->
+             RadioButton para SMS
+            <RadioButton
+                android:id="@+id/radioButtonSMS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMS"
+                android:layout_marginTop="16dp" />
+
+        </RadioGroup>
+
+         Botão Verificar
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnVerificar"
             style="@style/containedButtonPurple"
@@ -61,22 +68,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/checkBoxSMS" />
+            app:layout_constraintTop_toBottomOf="@id/radioGroupVerification" />
 
+    -->
+
+
+        <!-- Botão Voltar -->
         <Button
             android:id="@+id/btnVoltar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="80dp"
             android:text="Voltar"
             android:textSize="12sp"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/btnVerificar"
+            app:layout_constraintTop_toBottomOf="@+id/tvSecurityMessage"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+            style="@style/Widget.MaterialComponents.Button.TextButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>

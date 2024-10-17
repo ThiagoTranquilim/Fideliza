@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "211890719946",
+    "project_id": "fideliza-799ce",
+    "storage_bucket": "fideliza-799ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211890719946:android:0e5d2b073feb5cd571b833",
+        "android_client_info": {
+          "package_name": "br.com.fideliza"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_j4UBXgJrfcxEyIWser6eDGDmeby83Qk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
