@@ -34,12 +34,13 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:hint="Nome" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNome"
-                style="@style/editText"
-                android:hint="Nome" />
+                style="@style/editText"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo Sobrenome -->
@@ -50,12 +51,13 @@
             app:layout_constraintTop_toBottomOf="@id/textInputNome"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:hint="Sobrenome" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSobrenome"
-                style="@style/editText"
-                android:hint="Sobrenome" />
+                style="@style/editText"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo CPF -->
@@ -66,12 +68,13 @@
             app:layout_constraintTop_toBottomOf="@id/textInputSobrenome"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:hint="CPF">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCPF"
-                style="@style/editText"
-                android:hint="CPF" />
+                style="@style/editText"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo Celular -->
@@ -82,12 +85,13 @@
             app:layout_constraintTop_toBottomOf="@id/textInputCPF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:hint="Celular" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCelular"
-                style="@style/editText"
-                android:hint="Celular" />
+                style="@style/editText"/>
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo E-mail -->
@@ -98,12 +102,12 @@
             app:layout_constraintTop_toBottomOf="@id/textInputCelular"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:hint="E-mail" >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
-                style="@style/editText"
-                android:hint="E-mail" />
+                style="@style/editText"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Botão Cadastrar -->

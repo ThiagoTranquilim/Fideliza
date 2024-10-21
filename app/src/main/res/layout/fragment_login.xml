@@ -19,12 +19,11 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
->
+            android:hint="email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
-                style="@style/editText"
-                android:text="email" />
+                style="@style/editText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -35,12 +34,12 @@
             app:layout_constraintTop_toBottomOf="@id/textInput"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            android:hint="senha"
             android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSenha"
-                style="@style/editText"
-                android:text="senha" />
+                style="@style/editText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
