@@ -33,12 +33,12 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtCadastrarSe"
             android:layout_marginTop="10dp"
+            android:hint="nome"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Nome"
-                style="@style/editText"
-                android:text="nome" />
+                style="@style/editText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,12 +50,12 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputNome"
             android:layout_marginTop="10dp"
+            android:hint="Sobrenome"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSobrenome"
-                style="@style/editText"
-                android:text="Sobrenome" />
+                style="@style/editText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,12 +67,12 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputSobrenome"
             android:layout_marginTop="10dp"
+            android:hint="email"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmailCadastro"
-                style="@style/editText"
-                android:text="email" />
+                style="@style/editText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,12 +84,12 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputEmail"
             android:layout_marginTop="10dp"
+            android:hint="Senha"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSenhaCadastro"
-                style="@style/editText"
-                android:text="Senha" />
+                style="@style/editText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,12 +102,12 @@
             app:layout_constraintTop_toBottomOf="@id/textInputSenha"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:hint="Digite a senha novamente"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSenhaNovamente"
-                style="@style/editText"
-                android:text="Digite a senha novamente" />
+                style="@style/editText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
