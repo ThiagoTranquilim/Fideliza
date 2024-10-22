@@ -1,6 +1,7 @@
 package br.com.fideliza.ui.common
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +12,11 @@ import br.com.fideliza.R
 import br.com.fideliza.databinding.FragmentRegisterBinding
 import br.com.fideliza.firebase.auth.AuthCallBack
 import br.com.fideliza.firebase.auth.FirebaseAuthManager
+import br.com.fideliza.servidor.ConexaoServidor
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import java.lang.Exception
+import java.util.concurrent.Executors
 
 class RegisterFragment : Fragment() {
 
@@ -33,6 +36,15 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         firebaseAuthManager = FirebaseAuthManager()
+
+        activity?.runOnUiThread {
+            Executors.newSingleThreadExecutor().execute {
+                val resposta = ConexaoServidor.conecao("2;123;123")
+                activity?.runOnUiThread {
+                    Log.d("TESTE", resposta)
+                    }
+                }
+        }
         binding.btnCadastrarSe.setOnClickListener {
 
             // Aqui devemos implementar a função para cadastrar o usuário
@@ -61,12 +73,6 @@ class RegisterFragment : Fragment() {
                     .actionRegisterFragmentToVerificationFragment(firebaseUser.uid)
                 findNavController().navigate(action)
 
-                /*
-                activity?.runOnUiThread {
-                    Toast.makeText(context, "Usuário criado com sucesso.", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_registerFragment_to_verificationFragment)
-                }
-                */
             }
 
             override fun onFailure(exception: Exception?) {
