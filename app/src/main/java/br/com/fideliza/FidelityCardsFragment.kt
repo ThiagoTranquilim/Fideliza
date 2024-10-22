@@ -32,6 +32,8 @@ class FidelityCardsFragment : Fragment(R.layout.fragment_fidelity_cards) {
         val recyclerView = binding.recyclerViewCards
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+
+
         // Lista de empresas (Exemplo de dados)
         val empresas = listOf(
             Empresa(R.drawable.baseline_account_circle_black_24, "Empresa 1", "Descrição da Empresa 1"),

@@ -8,13 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import br.com.fideliza.R
 import br.com.fideliza.databinding.FragmentRegisterBinding
 import br.com.fideliza.firebase.auth.AuthCallBack
 import br.com.fideliza.firebase.auth.FirebaseAuthManager
 import br.com.fideliza.servidor.ConexaoServidor
+import br.com.fideliza.servidor.Gerenciador
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
+import org.bson.Document
+import org.bson.conversions.Bson
 import java.lang.Exception
 import java.util.concurrent.Executors
 
@@ -24,6 +26,13 @@ class RegisterFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var firebaseAuthManager : FirebaseAuthManager
     private lateinit var firebaseUser: FirebaseUser
+
+    private lateinit var nome : String;
+    private lateinit var email: String;
+    private lateinit var cpf: String;
+    private lateinit var telefone: String;
+    private lateinit var clienteDocument: Document
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,26 +46,41 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         firebaseAuthManager = FirebaseAuthManager()
 
-        activity?.runOnUiThread {
-            Executors.newSingleThreadExecutor().execute {
-                val resposta = ConexaoServidor.conecao("2;123;123")
-                activity?.runOnUiThread {
-                    Log.d("TESTE", resposta)
-                    }
-                }
-        }
         binding.btnCadastrarSe.setOnClickListener {
 
             // Aqui devemos implementar a função para cadastrar o usuário
             val emailEditText = binding.etEmailCadastro.text.toString()
             val senhaEditText = binding.etSenhaCadastro.text.toString()
+            nome = binding.Nome.text.toString();
+            telefone = "11-970707070";
+            cpf = "1111111111";
 
             cadastrar(emailEditText, senhaEditText)
+
+            clienteDocument = Document()
+            clienteDocument.append("nome", nome);
+            clienteDocument.append("email", emailEditText)
+            clienteDocument.append("telefone", telefone);
+            clienteDocument.append("cpf", cpf);
+
+            /*
+            Executors.newSingleThreadExecutor().execute {
+                val resposta = ConexaoServidor.conexao("1;" + clienteDocument.toJson() +";clientes")
+                Log.d("Teste", resposta)
+            }
+             */
+            var gerenciador : Gerenciador = Gerenciador("1;" + clienteDocument.toJson() +";clientes")
+
+
         }
 
 
         binding.btnVoltar.setOnClickListener {
-            parentFragmentManager.popBackStack()
+            //parentFragmentManager.popBackStack()
+            // Navegar para a próxima tela, se necessário
+            val action = RegisterFragmentDirections
+                .registerCompanyFragmentDirections()
+            findNavController().navigate(action)
         }
     }
 

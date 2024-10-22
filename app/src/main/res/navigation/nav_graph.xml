@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_registerFragment_to_verificationFragment"
             app:destination="@id/verificationFragment" />
+        <action
+            android:id="@+id/registerCompanyFragmentDirections"
+            app:destination="@id/registerCompanyFragment" />
     </fragment>
     <fragment
         android:id="@+id/recoverPassword"
@@ -201,4 +204,9 @@
         android:name="br.com.fideliza.RewardsFragment"
         android:label="fragment_rewards"
         tools:layout="@layout/fragment_rewards" />
+    <fragment
+        android:id="@+id/registerCompanyFragment"
+        android:name="br.com.fideliza.ui.common.RegisterCompanyFragment"
+        android:label="fragment_register_company"
+        tools:layout="@layout/fragment_register_company" />
 </navigation>

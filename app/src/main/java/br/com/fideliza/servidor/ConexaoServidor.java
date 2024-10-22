@@ -8,7 +8,7 @@ import java.net.Socket;
 
 public class ConexaoServidor {
 
-    public static String conecao(String mensagem) {
+    public static String conexao(String mensagem) {
         String resposta = "";
         Socket socket = null;
         BufferedReader servidorReader = null;
@@ -16,7 +16,7 @@ public class ConexaoServidor {
 
         try {
             // Conecta ao servidor
-            socket = new Socket("18.230.6.16", 12345);
+            socket = new Socket("54.94.21.251", 12345);
 
             // Inicializa os leitores e escritores
             servidorReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

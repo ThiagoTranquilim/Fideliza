@@ -39,6 +39,9 @@ android {
     buildFeatures{
         viewBinding = true
     }
+    packagingOptions {
+        exclude("META-INF/native-image/org.mongodb/bson/native-image.properties")
+    }
 }
 
 dependencies {
@@ -56,4 +59,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-auth-ktx")
+    implementation ("org.mongodb:bson:4.10.1")
 }
