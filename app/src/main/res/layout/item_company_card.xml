@@ -1,50 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp"
-    android:background="?attr/selectableItemBackground"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="4dp">
+    android:padding="8dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <!-- Logo da Empresa -->
+    <ImageView
+        android:id="@+id/ivCompanyLogo"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/baseline_account_circle_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- Nome da Empresa -->
+    <TextView
+        android:id="@+id/tvCompanyName"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:text="Nome da Empresa"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"/>
 
-        <!-- Exemplo de logo de empresa -->
-        <ImageView
-            android:id="@+id/ivCompanyLogo"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="Logo da empresa"
-            android:src="@drawable/baseline_account_circle_black_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <!-- Descrição da Empresa -->
+    <TextView
+        android:id="@+id/tvCompanyDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descrição da Promoção"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/tvCompanyName"
+        app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"/>
 
-        <!-- Nome da empresa -->
-        <TextView
-            android:id="@+id/tvCompanyName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="[Nome da Empresa]"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+    <!-- Pontos Necessários -->
+    <TextView
+        android:id="@+id/tvPontosNecessarios"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pontos Necessários: 0"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/tvCompanyDescription"
+        app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"/>
 
-        <!-- Informações adicionais (pode ser customizado) -->
-        <TextView
-            android:id="@+id/tvCompanyDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="[Descrição da empresa]"
-            app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
-            app:layout_constraintTop_toBottomOf="@id/tvCompanyName"
-            app:layout_constraintEnd_toEndOf="parent" />
+    <!-- Pontuação Atual -->
+    <TextView
+        android:id="@+id/tvPontuacaoAtual"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pontuação Atual: 0"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/tvPontosNecessarios"
+        app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

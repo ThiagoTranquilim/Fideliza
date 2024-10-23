@@ -1,3 +1,7 @@
-package br.com.fideliza.data
-
-data class Empresa(val logo: Int, val name: String, val description: String)
+class Empresa(
+    var logo: Int,
+    var empresa: String,
+    var descricao: String,
+    var pontosNecessarios: Int,
+    var pontuacaoAtual: Int
+)

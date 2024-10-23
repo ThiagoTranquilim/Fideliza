@@ -60,4 +60,6 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation ("org.mongodb:bson:4.10.1")
+    implementation ("com.google.code.gson:gson:2.8.8")
+    
 }

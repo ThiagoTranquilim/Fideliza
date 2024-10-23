@@ -12,11 +12,11 @@ import br.com.fideliza.databinding.FragmentRegisterCompanyBinding
 import br.com.fideliza.firebase.auth.AuthCallBack
 import br.com.fideliza.firebase.auth.FirebaseAuthManager
 import br.com.fideliza.servidor.ConexaoServidor
+import br.com.fideliza.servidor.ServerCallback
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import org.bson.Document
 import java.lang.Exception
-import java.util.concurrent.Executors
 
 class RegisterCompanyFragment : Fragment() {
 
@@ -79,13 +79,19 @@ class RegisterCompanyFragment : Fragment() {
                     append("userId", userId)
                 }
 
-                // Envio dos dados para o servidor
-                Executors.newSingleThreadExecutor().execute {
-                    val resposta = ConexaoServidor.conexao("1;${empresaDocument.toJson()};empresas")
-                    Log.d("CadastroEmpresa", resposta)
-                }
-
-
+                // Envio dos dados para o servidor usando a interface ServerCallback
+                ConexaoServidor.conexao("1;${empresaDocument.toJson()};empresas", object : ServerCallback {
+                    override fun onResult(resposta: String) {
+                        activity?.runOnUiThread {
+                            Log.d("CadastroEmpresa", resposta)
+                            if (resposta.contains("sucesso")) {
+                                Toast.makeText(context, "Empresa cadastrada com sucesso!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(context, "Falha ao cadastrar empresa: $resposta", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                })
             }
 
             override fun onFailure(exception: Exception?) {
