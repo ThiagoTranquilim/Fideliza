@@ -115,7 +115,11 @@
         android:id="@+id/registerNewCustomerFragment"
         android:name="br.com.fideliza.ui.empresa.RegisterNewCustomerFragment"
         android:label="fragment_register_new_customer"
-        tools:layout="@layout/fragment_register_new_customer" />
+        tools:layout="@layout/fragment_register_new_customer" >
+        <argument
+            android:name="nomeCliente"
+            app:argType="string" />
+    </fragment>
 
 
     <fragment

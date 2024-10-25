@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser
 import org.bson.Document
 import java.lang.Exception
 
-class RegisterFragment : Fragment() {
+class RegisterFragment : Fragment(), ServerCallback {
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
@@ -81,20 +81,7 @@ class RegisterFragment : Fragment() {
                 }
 
                 // Enviar os dados para o servidor com o firebaseUID usando a interface ServerCallback
-                ConexaoServidor.conexao("1;${clienteDocument.toJson()};clientes", object : ServerCallback {
-                    override fun onResult(resposta: String) {
-                        activity?.runOnUiThread {
-                            if (resposta.contains("sucesso")) {
-                                Toast.makeText(context, "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
-                                // Navegar para a próxima tela de verificação de email
-                                val action = RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(firebaseUser.uid)
-                                findNavController().navigate(action)
-                            } else {
-                                Toast.makeText(context, "Falha ao cadastrar cliente: $resposta", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-                })
+                ConexaoServidor.conexao("1;${clienteDocument.toJson()};clientes", this@RegisterFragment)
             }
 
             override fun onFailure(exception: Exception?) {
@@ -104,5 +91,18 @@ class RegisterFragment : Fragment() {
                 }
             }
         })
+    }
+
+    override fun onResult(resposta: String) {
+        activity?.runOnUiThread {
+            if (resposta.contains("sucesso")) {
+                Toast.makeText(context, "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
+                // Navegar para a próxima tela de verificação de email
+                val action = RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(firebaseUser.uid)
+                findNavController().navigate(action)
+            } else {
+                Toast.makeText(context, "Falha ao cadastrar cliente: $resposta", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

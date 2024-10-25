@@ -1,3 +1,8 @@
-package br.com.fideliza.data
-
-data class Cliente(val nome: String)
+class Cliente
+    (
+    var nome: String,
+    var email: String,
+    var telefone: String,
+    var cpf: String,
+    var firebaseUID: String
+)

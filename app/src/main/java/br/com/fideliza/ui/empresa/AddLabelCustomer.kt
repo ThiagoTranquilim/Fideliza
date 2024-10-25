@@ -15,10 +15,9 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val clienteNome = arguments?.getString("clienteNome")
 
-        Toast.makeText(requireContext(), "Cliente Selecionado: $clienteNome", Toast.LENGTH_SHORT).show()
-        // Obter referências para os elementos do layout
+
+    // Obter referências para os elementos do layout
         val btnLancarSelo = view.findViewById<Button>(R.id.btnLancarSelo)
         val btnVoltar = view.findViewById<TextView>(R.id.btnVoltar)
         val etValor = view.findViewById<EditText>(R.id.etValor)

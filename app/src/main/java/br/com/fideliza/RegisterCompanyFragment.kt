@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser
 import org.bson.Document
 import java.lang.Exception
 
-class RegisterCompanyFragment : Fragment() {
+class RegisterCompanyFragment : Fragment(), ServerCallback {
 
     private var _binding: FragmentRegisterCompanyBinding? = null
     private val binding get() = _binding!!
@@ -76,22 +76,11 @@ class RegisterCompanyFragment : Fragment() {
                     append("nome", nome)
                     append("cnpj", cnpj)
                     append("email", email)
-                    append("userId", userId)
+                    append("firebaseUID", userId)
                 }
 
                 // Envio dos dados para o servidor usando a interface ServerCallback
-                ConexaoServidor.conexao("1;${empresaDocument.toJson()};empresas", object : ServerCallback {
-                    override fun onResult(resposta: String) {
-                        activity?.runOnUiThread {
-                            Log.d("CadastroEmpresa", resposta)
-                            if (resposta.contains("sucesso")) {
-                                Toast.makeText(context, "Empresa cadastrada com sucesso!", Toast.LENGTH_SHORT).show()
-                            } else {
-                                Toast.makeText(context, "Falha ao cadastrar empresa: $resposta", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-                })
+                ConexaoServidor.conexao("1;${empresaDocument.toJson()};empresas", this@RegisterCompanyFragment)
             }
 
             override fun onFailure(exception: Exception?) {
@@ -105,5 +94,16 @@ class RegisterCompanyFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResult(resposta: String) {
+        activity?.runOnUiThread {
+            Log.d("CadastroEmpresa", resposta)
+            if (resposta.contains("sucesso")) {
+                Toast.makeText(context, "Empresa cadastrada com sucesso!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Falha ao cadastrar empresa: $resposta", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

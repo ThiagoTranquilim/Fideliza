@@ -13,8 +13,14 @@ import br.com.fideliza.data.EmpresaAdapter
 import br.com.fideliza.servidor.ConexaoServidor
 import com.google.gson.Gson
 import br.com.fideliza.R
+import br.com.fideliza.servidor.ServerCallback
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
-class FidelityCardsFragment : Fragment() {
+class FidelityCardsFragment : Fragment(), ServerCallback {
+
+    private lateinit var firebaseAuth : FirebaseAuth
     private var recyclerView: RecyclerView? = null
 
     override fun onCreateView(
@@ -31,27 +37,11 @@ class FidelityCardsFragment : Fragment() {
         // Configurar o RecyclerView
         recyclerView = view.findViewById(R.id.recyclerViewCards)
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        firebaseAuth = Firebase.auth
 
         // Iniciar a Thread para buscar os dados do servidor
         ConexaoServidor.conexao(
-            "4;12rLevnKxrT58WCyAQ4TNkl4e5N2"
-        ) { respostaDoServidor ->
-            // Parse da resposta JSON
-            val empresas: List<Empresa> = parseJsonResponse(respostaDoServidor)
-
-            // Atualiza a UI na thread principal usando runOnUiThread
-            activity?.runOnUiThread {
-                recyclerView?.let { rv ->
-                    val adapter = EmpresaAdapter(
-                        empresas,
-                        onItemClick = { empresa ->
-                            // Implementação da lógica de clique, se necessário
-                        }
-                    )
-                    rv.adapter = adapter
-                }
-            }
-        }
+            "4;${firebaseAuth.uid}", this)
     }
 
     private fun parseJsonResponse(response: String): List<Empresa> {
@@ -85,4 +75,23 @@ class FidelityCardsFragment : Fragment() {
 
         return empresas
     }
+
+    override fun onResult(resposta: String) {
+        // Aqui você lida com a resposta do servidor diretamente
+        val empresas: List<Empresa> = parseJsonResponse(resposta)
+
+        // Atualiza a UI na thread principal
+        activity?.runOnUiThread {
+            recyclerView?.let { rv ->
+                val adapter = EmpresaAdapter(
+                    empresas,
+                    onItemClick = { empresa ->
+                        // Implementação da lógica de clique, se necessário
+                    }
+                )
+                rv.adapter = adapter
+            }
+        }
+    }
+
 }
