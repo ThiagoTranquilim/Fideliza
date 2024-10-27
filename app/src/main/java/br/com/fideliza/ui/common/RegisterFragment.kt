@@ -95,7 +95,7 @@ class RegisterFragment : Fragment(), ServerCallback {
 
     override fun onResult(resposta: String) {
         activity?.runOnUiThread {
-            if (resposta.contains("sucesso")) {
+            if (resposta.contains("Sucesso")) {
                 Toast.makeText(context, "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT).show()
                 // Navegar para a próxima tela de verificação de email
                 val action = RegisterFragmentDirections.actionRegisterFragmentToVerificationFragment(firebaseUser.uid)

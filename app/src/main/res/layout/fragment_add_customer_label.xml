@@ -47,8 +47,8 @@
                 android:maxLines="1"
                 />
         </com.google.android.material.textfield.TextInputLayout>
-        <ImageView
-            android:id="@+id/ivSearchIcon"
+        <ImageButton
+            android:id="@+id/btnBuscar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_search_24"

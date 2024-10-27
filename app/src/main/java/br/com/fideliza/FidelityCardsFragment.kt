@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -82,14 +83,19 @@ class FidelityCardsFragment : Fragment(), ServerCallback {
 
         // Atualiza a UI na thread principal
         activity?.runOnUiThread {
-            recyclerView?.let { rv ->
-                val adapter = EmpresaAdapter(
-                    empresas,
-                    onItemClick = { empresa ->
-                        // Implementação da lógica de clique, se necessário
-                    }
-                )
-                rv.adapter = adapter
+            if (empresas.isEmpty()) {
+                // Caso não encontre nenhum ponto, exiba uma mensagem de feedback ao usuário
+                Toast.makeText(requireContext(), "Nenhum ponto encontrado.", Toast.LENGTH_SHORT).show()
+            } else {
+                recyclerView?.let { rv ->
+                    val adapter = EmpresaAdapter(
+                        empresas,
+                        onItemClick = { empresa ->
+                            // Implementação da lógica de clique, se necessário
+                        }
+                    )
+                    rv.adapter = adapter
+                }
             }
         }
     }

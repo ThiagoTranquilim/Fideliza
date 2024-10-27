@@ -2,6 +2,7 @@ package br.com.fideliza.ui.empresa
 
 import Cliente
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.fideliza.R
 import br.com.fideliza.data.ClienteAdapter
 import br.com.fideliza.databinding.FragmentAddCustomerLabelBinding
+import br.com.fideliza.servidor.ConexaoServidor
 import br.com.fideliza.servidor.ServerCallback
 import org.bson.Document
 
@@ -31,9 +33,18 @@ class AddCustomerLabelFragment : Fragment(R.layout.fragment_add_customer_label),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Configurar o RecyclerView
-        val recyclerView = binding.recyclerViewClientes
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.btnBuscar.setOnClickListener {
+
+            var docBusca = Document.parse("{ \"cpf\" : \"${binding.etCPF.text.toString()}\" }")
+
+            ConexaoServidor.conexao("3;${docBusca};clientes", this);
+
+            // Configurar o RecyclerView
+            val recyclerView = binding.recyclerViewClientes
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        }
 
         /*
 
@@ -72,7 +83,11 @@ class AddCustomerLabelFragment : Fragment(R.layout.fragment_add_customer_label),
     }
 
     override fun onResult(resultado: String?) {
-
+        try {
+            ret = Document.parse(resultado);
+        }catch (e : Exception) {
+            Log.e("ERRS", e.message.toString())
+        }
     }
 }
 

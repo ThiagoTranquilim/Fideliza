@@ -58,10 +58,12 @@ class CompanyMenu : Fragment(), ServerCallback {
 
     // Método callback que recebe o resultado do servidor
     override fun onResult(resultado: String?) {
-        if (resultado != null) {
-            // Inicialize 'ret' apenas quando a resposta estiver disponível
-            ret = Document.parse(resultado)
 
+        try {
+            ret = Document.parse(resultado)
+        }catch (e : Exception) {
+            ret = Document.parse("{ \"nome\" : \"erro para obter nome\" }")
         }
+
     }
 }

@@ -99,7 +99,7 @@ class RegisterCompanyFragment : Fragment(), ServerCallback {
     override fun onResult(resposta: String) {
         activity?.runOnUiThread {
             Log.d("CadastroEmpresa", resposta)
-            if (resposta.contains("sucesso")) {
+            if (resposta.contains("Sucesso")) {
                 Toast.makeText(context, "Empresa cadastrada com sucesso!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, "Falha ao cadastrar empresa: $resposta", Toast.LENGTH_SHORT).show()
