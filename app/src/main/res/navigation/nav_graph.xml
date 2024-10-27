@@ -129,14 +129,7 @@
         tools:layout="@layout/fragment_add_customer_label">
         <action
             android:id="@+id/action_addCustomerLabelFragment_to_addLabelCustomer"
-            app:destination="@id/addLabelCustomerFragment">
-            <argument
-                android:name="clienteNome"
-                app:argType="string"/>
-        </action>
-        <action
-            android:id="@+id/action_addCustomerLabelFragment_to_companyMenu"
-            app:destination="@id/companyMenu" />
+            app:destination="@id/addLabelCustomerFragment" />
     </fragment>
 
     <fragment
@@ -145,12 +138,13 @@
         android:label="AddLabelCustomerFragment"
         tools:layout="@layout/fragment_add_label_customer">
         <argument
-            android:name="clienteNome"
-            app:argType="string"/>
+            android:name="cpf"
+            app:argType="string" />
         <action
             android:id="@+id/action_addLabelCustomerFragment_to_tokenValidationCustomerFragment"
             app:destination="@id/tokenValidationCustomerFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/tokenValidationCustomerFragment"
         android:name="br.com.fideliza.ui.empresa.TokenValidationCustomerFragment"

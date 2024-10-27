@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import br.com.fideliza.R
-import br.com.fideliza.databinding.FragmentAddCustomerLabelBinding
 import br.com.fideliza.databinding.FragmentAddLabelCustomerBinding
 import br.com.fideliza.servidor.ConexaoServidor
 import br.com.fideliza.servidor.ServerCallback
@@ -22,14 +22,19 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
     private val binding get() = _binding!!
     private lateinit var ret : Document
 
-    //Corrigir o uso do CPF
-    private var cpf : String = "1111111111"
+    // Utilizando Safe Args para receber o argumento CPF
+    private val args: AddLabelCustomerArgs by navArgs()
+    private lateinit var cpf: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Recuperando o CPF passado no argumento
+        cpf = args.cpf
 
-    // Obter referências para os elementos do layout
+        Log.i("CPF",cpf)
+
+        // Obter referências para os elementos do layout
         val btnLancarSelo = view.findViewById<Button>(R.id.btnLancarSelo)
         val btnVoltar = view.findViewById<TextView>(R.id.btnVoltar)
         val etValor = view.findViewById<EditText>(R.id.etValor)
@@ -42,13 +47,12 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
             val data = etData.text.toString()
             val descricao = etDescricao.text.toString()
 
-            ConexaoServidor.conexao("4;6705bdcd9d914ea08d05550e;${cpf}", this)
+            ConexaoServidor.conexao("2;6705bdcd9d914ea08d05550e;${cpf}", this)
 
             // Lógica para lançar selo
             Toast.makeText(requireContext(), "Selo lançado para valor: $valor, data: $data", Toast.LENGTH_SHORT).show()
 
             // Aqui devemos adicionar a lógica de adicionar o selo para o cliente selecionado
-
             findNavController().navigate(R.id.action_addLabelCustomerFragment_to_tokenValidationCustomerFragment)
         }
 
@@ -59,11 +63,11 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
         }
     }
 
-    override fun onResult(resposta : String) {
+    override fun onResult(resposta: String) {
         try {
-            ret = Document.parse(resposta);
+            Log.i("Sucesso", resposta)
             //Tratar o que fazer com a resposta recebida
-        }catch (a : Exception) {
+        } catch (a: Exception) {
             Log.e("ERRS", a.message.toString())
         }
     }
