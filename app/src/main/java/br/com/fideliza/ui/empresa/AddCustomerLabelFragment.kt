@@ -58,7 +58,8 @@ class AddCustomerLabelFragment : Fragment(R.layout.fragment_add_customer_label),
 
     override fun onResult(resultado: String?) {
         try {
-            if (resultado == null || resultado.contains("Nenhum documento encontrado.") || resultado.contains("Erro")) {
+            Log.i("teste", resultado!!)
+            if (resultado == "nenhum documento encontrado." || resultado.contains("Erro")) {
                 // Exibir mensagem de feedback se nenhum documento for encontrado ou houver erro
                 activity?.runOnUiThread {
                     Toast.makeText(requireContext(), "Nenhum cliente encontrado ou erro no servidor.", Toast.LENGTH_SHORT).show()
