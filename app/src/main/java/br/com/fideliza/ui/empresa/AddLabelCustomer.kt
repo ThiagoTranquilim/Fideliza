@@ -14,6 +14,9 @@ import br.com.fideliza.R
 import br.com.fideliza.databinding.FragmentAddLabelCustomerBinding
 import br.com.fideliza.servidor.ConexaoServidor
 import br.com.fideliza.servidor.ServerCallback
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import org.bson.Document
 
 class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerCallback {
@@ -21,6 +24,7 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
     private var _binding: FragmentAddLabelCustomerBinding? = null
     private val binding get() = _binding!!
     private lateinit var ret : Document
+    private lateinit var firebaseAuth: FirebaseAuth
 
     // Utilizando Safe Args para receber o argumento CPF
     private val args: AddLabelCustomerArgs by navArgs()
@@ -33,6 +37,7 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
         cpf = args.cpf
 
         Log.i("CPF",cpf)
+        firebaseAuth = Firebase.auth
 
         // Obter referências para os elementos do layout
         val btnLancarSelo = view.findViewById<Button>(R.id.btnLancarSelo)
@@ -47,10 +52,11 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
             val data = etData.text.toString()
             val descricao = etDescricao.text.toString()
 
-            ConexaoServidor.conexao("2;6705bdcd9d914ea08d05550e;${cpf}", this)
+            val doc = Document()
+            doc.append("valor", valor)
+                .append("descricao", descricao)
 
-            // Lógica para lançar selo
-            Toast.makeText(requireContext(), "Selo lançado para valor: $valor, data: $data", Toast.LENGTH_SHORT).show()
+            ConexaoServidor.conexao("2;${firebaseAuth.uid};${cpf};${doc.toJson()}", this)
 
             // Aqui devemos adicionar a lógica de adicionar o selo para o cliente selecionado
             findNavController().navigate(R.id.action_addLabelCustomerFragment_to_tokenValidationCustomerFragment)
@@ -66,7 +72,8 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
     override fun onResult(resposta: String) {
         try {
             Log.i("Sucesso", resposta)
-            //Tratar o que fazer com a resposta recebida
+            // Lógica para lançar selo
+            Toast.makeText(requireContext(), "Selo lançado com sucesso", Toast.LENGTH_SHORT).show()
         } catch (a: Exception) {
             Log.e("ERRS", a.message.toString())
         }

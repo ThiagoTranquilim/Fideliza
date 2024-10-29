@@ -16,6 +16,7 @@ import br.com.fideliza.servidor.ConexaoServidor
 import br.com.fideliza.servidor.ServerCallback
 import com.google.firebase.auth.FirebaseUser
 import org.bson.Document
+import org.bson.json.JsonParseException
 
 class LoginFragment : Fragment(), ServerCallback {
 
@@ -53,26 +54,17 @@ class LoginFragment : Fragment(), ServerCallback {
 
     private fun login(email: String, password: String) {
         firebaseAuthManager.login(email, password, object: AuthCallBack() {
-            override fun onSuccess(user : FirebaseUser?) {
+            override fun onSuccess(user: FirebaseUser?) {
                 if (user?.isEmailVerified == true) {
-                    activity?.runOnUiThread {
-                        val loginDoc = Document("firebaseUID", user.uid)
-                        ConexaoServidor.conexao("3;${loginDoc.toJson()};clientes", this@LoginFragment);
-
-                        while(ret == null);
-                        // Aqui você pode adicionar a lógica de navegação, pois terá certeza de que `ret` foi atualizado
-                        if (ret.equals("Nenhum documento encontrado.")) {
-                            findNavController().navigate(R.id.action_loginFragment_to_companyProfile)
-                        } else {
-                            findNavController().navigate(R.id.action_loginFragment_to_customerMenuFragment)
-                        }
-                    }
+                    val loginDoc = Document("firebaseUID", user.uid.toString())
+                    ConexaoServidor.conexao("3;${loginDoc.toJson()};clientes", this@LoginFragment)
                 } else {
                     val action = LoginFragmentDirections.actionLoginFragmentToVerificationFragment(user!!.uid)
                     findNavController().navigate(action)
                 }
             }
-            override fun onFailure (exception : Exception?) {
+
+            override fun onFailure(exception: Exception?) {
                 activity?.runOnUiThread {
                     Toast.makeText(context, "Falha ao realizar o login: ${exception?.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -80,22 +72,30 @@ class LoginFragment : Fragment(), ServerCallback {
         })
     }
 
+    override fun onResult(resultado: String) {
+        activity?.runOnUiThread {
+            Log.i("LoginFragment", "Resultado recebido: '$resultado'")  // Log para ver o valor exato de 'resultado'
+
+            if (resultado.trim() == "nenhum documento encontrado.") {
+                // Navega para o perfil da empresa, pois nenhum documento foi encontrado
+                findNavController().navigate(R.id.action_loginFragment_to_companyProfile)
+            } else {
+                try {
+                    // Tenta parsear o JSON apenas se não for "nenhum"
+                    val document = Document.parse(resultado)
+                    // Processa o documento JSON como antes
+                    findNavController().navigate(R.id.action_loginFragment_to_customerMenuFragment)
+                } catch (e: JsonParseException) {
+                    Log.e("LoginFragment", "Erro ao parsear JSON: ${e.message}")
+                    Toast.makeText(context, "Erro ao processar os dados recebidos", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    override fun onResult(resultado: String) {
-        ret = resultado
-        Log.i("BILU", ret.toString())
-
-        /*
-        // Aqui você pode adicionar a lógica de navegação, pois terá certeza de que `ret` foi atualizado
-        if (ret.equals("Nenhum documento encontrado.")) {
-            findNavController().navigate(R.id.action_loginFragment_to_companyProfile)
-        } else {
-            findNavController().navigate(R.id.action_loginFragment_to_customerMenuFragment)
-        }
-         */
-    }
 }

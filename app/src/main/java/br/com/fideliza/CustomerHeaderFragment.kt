@@ -25,7 +25,7 @@ class CustomerHeaderFragment : Fragment(R.layout.fragment_customer_header), Serv
         var firebaseAuth : FirebaseAuth
         firebaseAuth = Firebase.auth
 
-        var ax = org.bson.Document("firebaseUID", firebaseAuth.uid.toString())
+        var ax = Document("firebaseUID", firebaseAuth.uid.toString())
         ConexaoServidor.conexao("3;${ax.toJson()};clientes",this)
 
         while(ret == null) {}
