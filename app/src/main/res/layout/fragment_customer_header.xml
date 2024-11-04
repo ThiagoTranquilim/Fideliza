@@ -14,7 +14,8 @@
         android:layout_height="48dp"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="20dp"/>
 
     <TextView
         android:id="@+id/tvClientName"
@@ -47,7 +48,8 @@
         app:layout_constraintEnd_toStartOf="@+id/btnRewards"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="45dp"/>
+        android:layout_marginStart="35dp"
+        android:textSize="11sp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRewards"
@@ -57,5 +59,6 @@
         app:layout_constraintTop_toBottomOf="@id/tvClientCPF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnFidelityCards"
-        android:layout_marginEnd="45dp"/>
+        android:layout_marginEnd="35dp"
+        android:textSize="11sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

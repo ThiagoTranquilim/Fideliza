@@ -16,12 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cadastrar-se"
-            android:textSize="22dp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginLeft="45dp"
             android:layout_marginRight="45dp"/>
 
@@ -32,13 +32,18 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtCadastrarSe"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:hint="nome"
-            >
+            android:layout_marginHorizontal="45dp"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxStrokeColor="@color/purple_secundary"
+            app:boxBackgroundMode="outline">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Nome"
-                style="@style/editText"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,11 +56,16 @@
             app:layout_constraintTop_toBottomOf="@id/textInputNome"
             android:layout_marginTop="10dp"
             android:hint="Sobrenome"
-            >
+            android:layout_marginHorizontal="45dp"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxStrokeColor="@color/purple_secundary"
+            app:boxBackgroundMode="outline">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSobrenome"
-                style="@style/editText"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,11 +78,16 @@
             app:layout_constraintTop_toBottomOf="@id/textInputSobrenome"
             android:layout_marginTop="10dp"
             android:hint="email"
-            >
+            android:layout_marginHorizontal="45dp"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxStrokeColor="@color/purple_secundary"
+            app:boxBackgroundMode="outline">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmailCadastro"
-                style="@style/editText"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -85,11 +100,16 @@
             app:layout_constraintTop_toBottomOf="@id/textInputEmail"
             android:layout_marginTop="10dp"
             android:hint="Senha"
-            >
+            android:layout_marginHorizontal="45dp"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxStrokeColor="@color/purple_secundary"
+            app:boxBackgroundMode="outline">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSenhaCadastro"
-                style="@style/editText"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,18 +123,23 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:hint="Digite a senha novamente"
-            >
+            android:layout_marginHorizontal="45dp"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxStrokeColor="@color/purple_secundary"
+            app:boxBackgroundMode="outline">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSenhaNovamente"
-                style="@style/editText"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCadastrarSe"
             style="@style/containedButtonPurple"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:text="Entrar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
