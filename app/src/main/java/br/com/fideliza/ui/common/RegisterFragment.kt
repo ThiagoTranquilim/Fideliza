@@ -54,10 +54,16 @@ class RegisterFragment : Fragment(), ServerCallback {
             cadastrar(emailEditText, senhaEditText)
         }
 
-        binding.btnVoltar.setOnClickListener {
-            // Voltar para a tela anterior ou outra navegação
+        binding.btnCadastrarEmpresa.setOnClickListener {
             val action = RegisterFragmentDirections.registerCompanyFragmentDirections()
             findNavController().navigate(action)
+        }
+
+        binding.btnVoltar.setOnClickListener {
+            // Voltar para a tela anterior ou outra navegação
+            val action = RegisterFragmentDirections.actionRegisterFragmentPop();
+            findNavController().navigate(action);
+
         }
     }
 
