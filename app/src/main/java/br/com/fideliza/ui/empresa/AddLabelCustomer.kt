@@ -4,26 +4,20 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.fideliza.R
 import br.com.fideliza.databinding.FragmentAddLabelCustomerBinding
 import br.com.fideliza.servidor.ConexaoServidor
 import br.com.fideliza.servidor.ServerCallback
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import org.bson.Document
 
 class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerCallback {
 
     private var _binding: FragmentAddLabelCustomerBinding? = null
     private val binding get() = _binding!!
-    private lateinit var ret : Document
+    private lateinit var ret: Document
     private lateinit var firebaseAuth: FirebaseAuth
 
     // Utilizando Safe Args para receber o argumento CPF
@@ -33,49 +27,66 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        _binding = FragmentAddLabelCustomerBinding.bind(view)  // Inicialização do binding
+
         // Recuperando o CPF passado no argumento
         cpf = args.cpf
+        Log.i("CPF", cpf)
 
-        Log.i("CPF",cpf)
-        firebaseAuth = Firebase.auth
+        firebaseAuth = FirebaseAuth.getInstance()
 
         // Obter referências para os elementos do layout
-        val btnLancarSelo = view.findViewById<Button>(R.id.btnLancarSelo)
-        val btnVoltar = view.findViewById<TextView>(R.id.btnVoltar)
-        val etValor = view.findViewById<EditText>(R.id.etValor)
-        val etData = view.findViewById<EditText>(R.id.etData)
-        val etDescricao = view.findViewById<EditText>(R.id.etDescricao)
+        val btnLancarSelo = binding.btnLancarSelo
+        val btnVoltar = binding.btnVoltar
+        val etValor = binding.etValor
+        val etData = binding.etData
+        val etDescricao = binding.etDescricao
 
-        // Exemplo de ação ao clicar no botão "Lançar Selo"
+        ConexaoServidor.conexao("3;{ \"cpf\" : \"${cpf}\" };clientes", this)
+
+        // Ação ao clicar no botão "Lançar Selo"
         btnLancarSelo.setOnClickListener {
             val valor = etValor.text.toString()
             val data = etData.text.toString()
             val descricao = etDescricao.text.toString()
 
             val doc = Document()
-            doc.append("valor", valor)
-                .append("descricao", descricao)
+            doc.append("valor", valor).append("descricao", descricao)
 
-            ConexaoServidor.conexao("2;${firebaseAuth.uid};${cpf};${doc.toJson()}", this)
-
-            // Aqui devemos adicionar a lógica de adicionar o selo para o cliente selecionado
-            findNavController().navigate(R.id.action_addLabelCustomerFragment_to_tokenValidationCustomerFragment)
+            // Chamadas para o servidor
+            ConexaoServidor.conexao("2;${firebaseAuth.uid};${cpf};${doc.toJson()}", this@AddLabelCustomer)
         }
 
         // Ação ao clicar no botão "Voltar"
         btnVoltar.setOnClickListener {
-            // Navegar de volta ao fragmento anterior
             parentFragmentManager.popBackStack()
         }
     }
 
     override fun onResult(resposta: String) {
+        Log.i("Resp", resposta)
         try {
-            Log.i("Sucesso", resposta)
-            // Lógica para lançar selo
-            Toast.makeText(requireContext(), "Selo lançado com sucesso", Toast.LENGTH_SHORT).show()
-        } catch (a: Exception) {
-            Log.e("ERRS", a.message.toString())
+            if (resposta == "Sucesso") {
+                Toast.makeText(requireContext(), "Selo lançado com sucesso", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                ret = Document.parse(resposta)
+                Log.i("ParsedDocument", ret.toJson())
+
+                // Verifique se o fragmento está adicionado antes de atualizar o binding
+                if (isAdded) {
+                    binding.tvNomeCliente.text = ret.getString("nome") ?: "Nome não encontrado"
+                } else {
+                    Log.e("ERRS", "Fragment não está mais anexado à Activity")
+                }
+            }
+        } catch (e: Exception) {
+            Log.e("ERRS", e.message.toString())
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
