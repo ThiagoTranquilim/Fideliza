@@ -47,58 +47,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp"/>
 
-        <!-- Linhas placeholder para detalhes do cliente -->
-        <View
-            android:id="@+id/line1"
-            android:layout_width="0dp"
-            android:layout_height="8dp"
-            android:background="@drawable/line_placeholder"
-            app:layout_constraintTop_toBottomOf="@id/tvNomeCliente"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="45dp"/>
-
-        <View
-            android:id="@+id/line2"
-            android:layout_width="0dp"
-            android:layout_height="8dp"
-            android:background="@drawable/line_placeholder"
-            app:layout_constraintTop_toBottomOf="@id/line1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="45dp"/>
-
-        <!-- Selos -->
-        <GridLayout
-            android:id="@+id/gridLayoutSelos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:columnCount="4"
-            android:rowCount="2"
-            app:layout_constraintTop_toBottomOf="@id/line2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp">
-
-            <!-- Exemplo de selo selecionado -->
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/baseline_check_box_24"
-                android:layout_margin="8dp"/>
-
-            <!-- Exemplo de selo não selecionado -->
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/baseline_crop_square_24"
-                android:layout_margin="8dp"/>
-
-            <!-- Repetir conforme necessário -->
-
-        </GridLayout>
 
         <!-- Campos de entrada de valor, data e descrição -->
         <EditText
@@ -107,7 +55,7 @@
             android:layout_height="wrap_content"
             android:hint="Valor"
             android:inputType="numberDecimal"
-            app:layout_constraintTop_toBottomOf="@id/gridLayoutSelos"
+            app:layout_constraintTop_toBottomOf="@id/ivClienteIcon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/etData"
             android:layout_marginTop="16dp"
@@ -119,7 +67,7 @@
             android:layout_height="wrap_content"
             android:hint="Data"
             android:inputType="date"
-            app:layout_constraintTop_toBottomOf="@id/gridLayoutSelos"
+            app:layout_constraintTop_toBottomOf="@id/etValor"
             app:layout_constraintStart_toEndOf="@id/etValor"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="16dp"/>
