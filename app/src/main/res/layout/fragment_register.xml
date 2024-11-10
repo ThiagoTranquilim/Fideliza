@@ -33,7 +33,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtCadastrarSe"
             android:layout_marginTop="30dp"
-            android:hint="nome"
+            android:hint="Nome"
             android:layout_marginHorizontal="45dp"
             app:hintEnabled="true"
             app:hintAnimationEnabled="true"
@@ -47,6 +47,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!--
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputSobrenome"
             android:layout_width="match_parent"
@@ -69,15 +70,39 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputCPF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputNome"
+            android:layout_marginTop="10dp"
+            android:hint="CPF"
+            android:layout_marginHorizontal="45dp"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxStrokeColor="@color/purple_secundary"
+            app:boxBackgroundMode="outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCPF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textInputSobrenome"
+            app:layout_constraintTop_toBottomOf="@id/textInputCPF"
             android:layout_marginTop="10dp"
-            android:hint="email"
+            android:hint="E-mail"
             android:layout_marginHorizontal="45dp"
             app:hintEnabled="true"
             app:hintAnimationEnabled="true"
@@ -92,12 +117,34 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputSenha"
+            android:id="@+id/textInputTel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputEmail"
+            android:layout_marginTop="10dp"
+            android:hint="Telefone"
+            android:layout_marginHorizontal="45dp"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxStrokeColor="@color/purple_secundary"
+            app:boxBackgroundMode="outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTelefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textInputTel"
             android:layout_marginTop="10dp"
             android:hint="Senha"
             android:layout_marginHorizontal="45dp"
@@ -107,6 +154,7 @@
             app:boxBackgroundMode="outline">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textPassword"
                 android:id="@+id/etSenhaCadastro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -130,6 +178,7 @@
             app:boxBackgroundMode="outline">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textPassword"
                 android:id="@+id/etSenhaNovamente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -147,7 +196,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textInputSenhaNovamente"/>
 
-        <Button
+
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCadastrarEmpresa"
             style="@style/containedButtonPurple"
             android:layout_width="wrap_content"

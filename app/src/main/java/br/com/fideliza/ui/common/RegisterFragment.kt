@@ -46,12 +46,30 @@ class RegisterFragment : Fragment(), ServerCallback {
             // Obtenção dos dados do formulário
             val emailEditText = binding.etEmailCadastro.text.toString()
             val senhaEditText = binding.etSenhaCadastro.text.toString()
+            val senhaNovamente = binding.etSenhaNovamente.text.toString()
             nome = binding.Nome.text.toString()
-            telefone = "11-970707070"  // Ajuste para obter da UI
-            cpf = "1111111111"  // Ajuste para obter da UI
+            telefone = binding.etTelefone.text.toString()
+            cpf = binding.etCPF.text.toString()
 
-            // Chama o método de cadastro
-            cadastrar(emailEditText, senhaEditText)
+            //Verificamos o preenchimento dos campos
+            if (emailEditText.isEmpty()) {
+                binding.etEmailCadastro.error = "Informe o e-mail"
+            } else if (senhaEditText.isEmpty()) {
+                binding.etSenhaCadastro.error = "Informe a senha"
+            } else if (senhaNovamente.isEmpty()) {
+                binding.etSenhaNovamente.error = "Confirme a senha"
+            } else if (senhaEditText != senhaNovamente) {
+                binding.etSenhaNovamente.error = "As senhas são diferentes"
+            } else if (nome.isEmpty()) {
+                binding.Nome.error = "Informe o nome"
+            } else if (telefone.isEmpty()) {
+                binding.etTelefone.error = "Informe o telefone"
+            } else if (cpf.isEmpty()) {
+                binding.etCPF.error = "Informe o CPF"
+            } else {
+                //Chama o método para cadastrar
+                cadastrar(emailEditText, senhaEditText)
+            }
         }
 
         binding.btnCadastrarEmpresa.setOnClickListener {
