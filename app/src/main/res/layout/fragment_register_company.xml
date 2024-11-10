@@ -110,7 +110,32 @@
             app:boxBackgroundMode="outline">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textPassword"
                 android:id="@+id/etSenhaCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputSenhaDenovo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Digite a senha novamente"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:layout_constraintTop_toBottomOf="@id/textInputSenha"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginHorizontal="45dp"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:boxStrokeColor="@color/purple_secundary"
+            app:boxBackgroundMode="outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textPassword"
+                android:id="@+id/etSenhaCadastroDenovo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -121,7 +146,7 @@
             style="@style/containedButtonPurple"
             android:text="Cadastrar Empresa"
             android:layout_marginTop="25dp"
-            app:layout_constraintTop_toBottomOf="@id/textInputSenha"
+            app:layout_constraintTop_toBottomOf="@id/textInputSenhaDenovo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

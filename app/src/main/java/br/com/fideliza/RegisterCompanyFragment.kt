@@ -29,6 +29,7 @@ class RegisterCompanyFragment : Fragment(), ServerCallback {
     private lateinit var email: String
     private lateinit var cnpj: String
     private lateinit var senha: String
+    private lateinit var senha2: String
     private lateinit var empresaDocument: Document
 
     override fun onCreateView(
@@ -47,17 +48,24 @@ class RegisterCompanyFragment : Fragment(), ServerCallback {
             // Coleta de dados do formulário
             email = binding.etEmailCadastro.text.toString()
             senha = binding.etSenhaCadastro.text.toString()
+            senha2 = binding.etSenhaCadastroDenovo.text.toString()
+
             nome = binding.etNomeEmpresa.text.toString()
             cnpj = binding.etCnpj.text.toString()
 
             // Validação simples dos campos
-            if (email.isEmpty() || senha.isEmpty() || nome.isEmpty() || cnpj.isEmpty()) {
+            if (email.isEmpty() || senha.isEmpty() || senha2.isEmpty() || nome.isEmpty() || cnpj.isEmpty()) {
                 Toast.makeText(context, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Chamada para cadastrar a empresa
-            cadastrarEmpresa(email, senha)
+            //Verifica se as senhas correspondem e cadastra
+            if (senha == senha2) {
+                cadastrarEmpresa(email, senha)
+            } else{
+                binding.etSenhaCadastroDenovo.error = "As senhas são diferentes"
+                binding.etSenhaCadastro.error = "As senhas são diferentes"
+            }
         }
 
         binding.btnVoltar.setOnClickListener {
