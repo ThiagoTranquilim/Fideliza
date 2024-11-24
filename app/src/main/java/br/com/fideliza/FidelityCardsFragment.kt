@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,6 +36,8 @@ class FidelityCardsFragment : Fragment(), ServerCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val btnVoltar: Button = view.findViewById(R.id.btnVoltar)
+
         // Configurar o RecyclerView
         recyclerView = view.findViewById(R.id.recyclerViewCards)
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
@@ -43,6 +46,10 @@ class FidelityCardsFragment : Fragment(), ServerCallback {
         // Iniciar a Thread para buscar os dados do servidor
         ConexaoServidor.conexao(
             "4;${firebaseAuth.uid}", this)
+
+        btnVoltar.setOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
     }
 
     private fun parseJsonResponse(response: String): List<Empresa> {
