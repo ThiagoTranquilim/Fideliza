@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import br.com.fideliza.servidor.ConexaoServidor
 import br.com.fideliza.servidor.ServerCallback
+import br.com.fideliza.ui.common.Profile
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -39,6 +40,7 @@ class CustomerHeaderFragment : Fragment(R.layout.fragment_customer_header), Serv
         // Encontrar os botões
         val btnFidelityCards = view.findViewById<Button>(R.id.btnFidelityCards)
         val btnRewards = view.findViewById<Button>(R.id.btnRewards)
+        val bntProfile = view.findViewById<Button>(R.id.btnProfile)
 
         // Configurar o clique para trocar o fragmento de conteúdo para o FidelityCardsFragment
         btnFidelityCards.setOnClickListener {
@@ -49,6 +51,10 @@ class CustomerHeaderFragment : Fragment(R.layout.fragment_customer_header), Serv
         // Configurar o clique para trocar o fragmento de conteúdo para o RewardsFragment
         btnRewards.setOnClickListener {
             (parentFragment as? CustomerMenuFragment)?.replaceContentFragment(RewardsFragment())
+        }
+
+        bntProfile.setOnClickListener {
+            (parentFragment as? CustomerMenuFragment)?.replaceContentFragment(Profile())
         }
     }
 

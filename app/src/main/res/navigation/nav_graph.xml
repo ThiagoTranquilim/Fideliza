@@ -114,7 +114,12 @@
         android:id="@+id/Profile"
         android:name="br.com.fideliza.ui.common.Profile"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_Profile_pop"
+            app:popUpTo="@id/Profile"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/registerNewCustomerFragment"
         android:name="br.com.fideliza.ui.empresa.RegisterNewCustomerFragment"
