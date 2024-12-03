@@ -22,18 +22,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <Button
-            android:id="@+id/btnVoltar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-68dp"
-            android:text="Voltar"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/recyclerViewCards"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

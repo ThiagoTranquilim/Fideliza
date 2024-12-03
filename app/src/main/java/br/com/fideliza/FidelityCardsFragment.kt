@@ -36,8 +36,6 @@ class FidelityCardsFragment : Fragment(), ServerCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnVoltar: Button = view.findViewById(R.id.btnVoltar)
-
         // Configurar o RecyclerView
         recyclerView = view.findViewById(R.id.recyclerViewCards)
         recyclerView?.layoutManager = LinearLayoutManager(requireContext())
@@ -47,9 +45,6 @@ class FidelityCardsFragment : Fragment(), ServerCallback {
         ConexaoServidor.conexao(
             "4;${firebaseAuth.uid}", this)
 
-        btnVoltar.setOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
     }
 
     private fun parseJsonResponse(response: String): List<Empresa> {

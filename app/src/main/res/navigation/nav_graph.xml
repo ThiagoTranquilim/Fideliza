@@ -5,6 +5,12 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
+    <action
+        android:id="@+id/action_global_to_homeFragment"
+        app:destination="@id/homeFragment"
+        app:popUpTo="@id/homeFragment"
+        app:popUpToInclusive="true" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="br.com.fideliza.ui.common.HomeFragment"
@@ -115,9 +121,17 @@
         android:name="br.com.fideliza.ui.common.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
+
+        <!-- Ação existente (pode ser mantida) -->
         <action
             android:id="@+id/action_Profile_pop"
             app:popUpTo="@id/Profile"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_Profile_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

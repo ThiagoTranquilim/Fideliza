@@ -1,5 +1,7 @@
 package br.com.fideliza.servidor;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -38,11 +40,21 @@ public class ConexaoServidor {
                     resposta = "Erro no cliente: " + e.getMessage();
                 } finally {
                     try {
-                        if (servidorReader != null) servidorReader.close();
-                        if (servidorWriter != null) servidorWriter.close();
-                        if (socket != null) socket.close();
+                        if (servidorReader != null) {
+                            servidorReader.close();
+                            Log.d("ConexaoServidor", "BufferedReader fechado.");
+                        }
+                        if (servidorWriter != null) {
+                            servidorWriter.close();
+                            Log.d("ConexaoServidor", "BufferedWriter fechado.");
+                        }
+                        if (socket != null) {
+                            socket.close();
+                            Log.d("ConexaoServidor", "Socket fechado.");
+                        }
                     } catch (Exception e) {
                         resposta += "\nErro ao fechar recursos do cliente: " + e.getMessage();
+                        Log.e("ConexaoServidor", "Erro ao fechar recursos: " + e.getMessage());
                     }
                 }
 

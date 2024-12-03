@@ -38,20 +38,36 @@ class LoginFragment : Fragment(), ServerCallback {
 
         firebaseAuthManager = FirebaseAuthManager()
 
-        binding.Cadastrar.setOnClickListener { findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
+        // Limpar campos de entrada ao exibir o fragmento
+        binding.etEmail.text?.clear()
+        binding.etSenha.text?.clear()
 
-        // Aqui devemos verificar que tipo de usuário se conectou e então determinar qual fragment devemos abrir company ou customer
-        binding.btnEntrar.setOnClickListener {
-
-            val emailEditText = binding.etEmail.text.toString()
-            val passwordEditText = binding.etSenha.text.toString()
-            login(emailEditText, passwordEditText)
+        binding.Cadastrar.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
+        binding.btnEntrar.setOnClickListener {
+            val email = binding.etEmail.text.toString()
+            val senha = binding.etSenha.text.toString()
+            if (email.isNotBlank() && senha.isNotBlank()) {
+                login(email, senha)
+            } else {
+                Toast.makeText(context, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show()
+            }
+        }
 
-        binding.btnEsqueciASenha.setOnClickListener { findNavController().navigate(R.id.action_loginFragment_to_recoverPassword) }
+        binding.btnEsqueciASenha.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_recoverPassword)
+        }
     }
 
+    private fun navigateToHome() {
+        findNavController().navigate(R.id.action_global_to_homeFragment) {
+            popUpTo(R.id.nav_graph) {
+                inclusive = true
+            }
+        }
+    }
     private fun login(email: String, password: String) {
         firebaseAuthManager.login(email, password, object: AuthCallBack() {
             override fun onSuccess(user: FirebaseUser?) {
@@ -74,16 +90,18 @@ class LoginFragment : Fragment(), ServerCallback {
 
     override fun onResult(resultado: String) {
         activity?.runOnUiThread {
-            Log.i("LoginFragment", "Resultado recebido: '$resultado'")  // Log para ver o valor exato de 'resultado'
+            Log.i("LoginFragment", "Resultado recebido: '$resultado'")
+
+            if (!isAdded || findNavController().currentDestination?.id != R.id.loginFragment) {
+                Log.w("LoginFragment", "Fragment não está mais ativo ou NavController não está no destino correto")
+                return@runOnUiThread
+            }
 
             if (resultado.trim() == "nenhum documento encontrado.") {
-                // Navega para o perfil da empresa, pois nenhum documento foi encontrado
                 findNavController().navigate(R.id.action_loginFragment_to_companyProfile)
             } else {
                 try {
-                    // Tenta parsear o JSON apenas se não for "nenhum"
                     val document = Document.parse(resultado)
-                    // Processa o documento JSON como antes
                     findNavController().navigate(R.id.action_loginFragment_to_customerMenuFragment)
                 } catch (e: JsonParseException) {
                     Log.e("LoginFragment", "Erro ao parsear JSON: ${e.message}")

@@ -1,75 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
 
-    <!-- Logo da Empresa -->
-    <ImageView
-        android:id="@+id/ivCompanyLogo"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/baseline_account_circle_24"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <!-- Nome da Empresa -->
-    <TextView
-        android:id="@+id/tvCompanyName"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome da Empresa"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#000000"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="8dp"/>
+        android:padding="12dp">
 
-    <!-- Descrição da Empresa -->
-    <TextView
-        android:id="@+id/tvCompanyDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Descrição da Promoção"
-        android:textSize="14sp"
-        android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@id/tvCompanyName"
-        app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp"
-        android:layout_marginStart="8dp"/>
+        <!-- Logo da Empresa -->
+        <ImageView
+            android:id="@+id/ivCompanyLogo"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/baseline_account_circle_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
 
-    <!-- Pontos Necessários -->
-    <TextView
-        android:id="@+id/tvPontosNecessarios"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Pontos Necessários: 0"
-        android:textSize="14sp"
-        android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@id/tvCompanyDescription"
-        app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp"
-        android:layout_marginStart="8dp"/>
+        <!-- Nome da Empresa -->
+        <TextView
+            android:id="@+id/tvCompanyName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nome da Empresa"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="12dp" />
 
-    <!-- Pontuação Atual -->
-    <TextView
-        android:id="@+id/tvPontuacaoAtual"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Pontuação Atual: 0"
-        android:textSize="14sp"
-        android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@id/tvPontosNecessarios"
-        app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp"
-        android:layout_marginStart="8dp"/>
+        <!-- Descrição da Empresa -->
+        <TextView
+            android:id="@+id/tvCompanyDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Descrição da Promoção"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            app:layout_constraintTop_toBottomOf="@id/tvCompanyName"
+            app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="12dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Pontos Necessários -->
+        <LinearLayout
+            android:id="@+id/layoutPontosNecessarios"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tvCompanyDescription"
+            app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_star_24"
+                app:tint="#FF9800" />
+
+            <TextView
+                android:id="@+id/tvPontosNecessarios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pontos Necessários: 0"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Pontuação Atual -->
+        <LinearLayout
+            android:id="@+id/layoutPontuacaoAtual"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/layoutPontosNecessarios"
+            app:layout_constraintStart_toEndOf="@id/ivCompanyLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_check_circle_24"
+                app:tint="#4CAF50" />
+
+            <TextView
+                android:id="@+id/tvPontuacaoAtual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pontuação Atual: 0"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
