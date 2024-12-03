@@ -17,6 +17,8 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import org.bson.Document
 import java.lang.Exception
+import android.text.Editable
+import android.text.TextWatcher
 
 class RegisterCompanyFragment : Fragment(), ServerCallback {
 
@@ -71,6 +73,27 @@ class RegisterCompanyFragment : Fragment(), ServerCallback {
         binding.btnVoltar.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
+
+        // Adicionar máscara para CNPJ
+        binding.etCnpj.addTextChangedListener(object : TextWatcher {
+            private var isUpdating = false
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (isUpdating) return
+
+                val textoSemMascara = s.toString().replace(Regex("[^\\d]"), "")
+                val textoComMascara = aplicarMascaraCnpj(textoSemMascara)
+
+                isUpdating = true
+                binding.etCnpj.setText(textoComMascara)
+                binding.etCnpj.setSelection(textoComMascara.length)
+                isUpdating = false
+            }
+        })
     }
 
     private fun cadastrarEmpresa(email: String, password: String) {
@@ -114,4 +137,10 @@ class RegisterCompanyFragment : Fragment(), ServerCallback {
             }
         }
     }
+
+    // Função para aplicar máscara de CPF
+    private fun aplicarMascaraCnpj(texto: String): String {
+        return texto.replace(Regex("(\\d{2})(\\d{3})(\\d{3})(\\d{4})(\\d{2})"), "$1.$2.$3/$4-$5")
+    }
+
 }
