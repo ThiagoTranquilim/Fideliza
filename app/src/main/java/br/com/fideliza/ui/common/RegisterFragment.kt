@@ -16,6 +16,8 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import org.bson.Document
 import java.lang.Exception
+import android.text.Editable
+import android.text.TextWatcher
 
 class RegisterFragment : Fragment(), ServerCallback {
 
@@ -83,6 +85,49 @@ class RegisterFragment : Fragment(), ServerCallback {
             findNavController().navigate(action);
 
         }
+
+        // Adicionar máscara para telefone
+        binding.etTelefone.addTextChangedListener(object : TextWatcher {
+            private var isUpdating = false
+            private val mask = ""
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (isUpdating) return
+
+                val textoSemMascara = s.toString().replace(Regex("[^\\d]"), "")
+                val textoComMascara = aplicarMascaraTelefone(textoSemMascara)
+
+                isUpdating = true
+                binding.etTelefone.setText(textoComMascara)
+                binding.etTelefone.setSelection(textoComMascara.length)
+                isUpdating = false
+            }
+        })
+
+        // Adicionar máscara para CPF
+        binding.etCPF.addTextChangedListener(object : TextWatcher {
+            private var isUpdating = false
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (isUpdating) return
+
+                val textoSemMascara = s.toString().replace(Regex("[^\\d]"), "")
+                val textoComMascara = aplicarMascaraCpf(textoSemMascara)
+
+                isUpdating = true
+                binding.etCPF.setText(textoComMascara)
+                binding.etCPF.setSelection(textoComMascara.length)
+                isUpdating = false
+            }
+        })
     }
 
     override fun onDestroyView() {
@@ -128,5 +173,19 @@ class RegisterFragment : Fragment(), ServerCallback {
                 Toast.makeText(context, "Falha ao cadastrar cliente: $resposta", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    // Função para aplicar máscara de telefone
+    private fun aplicarMascaraTelefone(texto: String): String {
+        return if (texto.length <= 10) {
+            texto.replace(Regex("(\\d{2})(\\d{4})(\\d+)"), "($1) $2-$3")
+        } else {
+            texto.replace(Regex("(\\d{2})(\\d{5})(\\d+)"), "($1) $2-$3")
+        }
+    }
+
+    // Função para aplicar máscara de CPF
+    private fun aplicarMascaraCpf(texto: String): String {
+        return texto.replace(Regex("(\\d{3})(\\d{3})(\\d{3})(\\d{2})"), "$1.$2.$3-$4")
     }
 }

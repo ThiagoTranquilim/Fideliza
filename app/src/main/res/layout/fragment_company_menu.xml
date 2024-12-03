@@ -11,104 +11,72 @@
         android:layout_height="match_parent"
         android:background="#E0E0E0">
 
+        <!-- Painel Superior -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/painel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#001f3f"
+            android:paddingBottom="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingBottom="10dp">
-        <ImageView
-            android:id="@+id/ivProfile"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/baseline_account_circle_24"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginLeft="20dp"/>
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tvEmpresa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[Empresa]"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivProfile"
-            app:layout_constraintBottom_toBottomOf="@id/ivProfile"
-            android:layout_marginStart="8dp"/>
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/baseline_account_circle_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvEstabelecimento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[estabelecimento]"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toEndOf="@id/ivProfile"
-            app:layout_constraintTop_toBottomOf="@id/tvEmpresa"
-            android:layout_marginStart="8dp"/>
+            <TextView
+                android:id="@+id/tvEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="[Empresa]"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ivProfile"
+                app:layout_constraintStart_toEndOf="@id/ivProfile"
+                app:layout_constraintTop_toTopOf="@id/ivProfile" />
 
-        <!-- Ícone de notificação -->
-        <ImageView
-            android:id="@+id/ivNotification"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/baseline_notifications_24"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="22dp"
-            android:layout_marginRight="22dp"/>
+            <TextView
+                android:id="@+id/tvEstabelecimento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="[estabelecimento]"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/tvEmpresa"
+                app:layout_constraintTop_toBottomOf="@id/tvEmpresa" />
 
-        <!-- Botões de Ação -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAddCliente"
-            style="@style/containedButtonPurple2"
-            android:text="Adicionar Cliente Novo"
-            app:layout_constraintTop_toBottomOf="@id/ivProfile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnAddSelos"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="45dp"
-            android:textSize="11sp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAddSelos"
-            style="@style/containedButtonGreen"
-            android:text="Adicionar Selos Cliente"
-            app:layout_constraintTop_toBottomOf="@id/ivProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/btnAddCliente"
-            android:layout_marginEnd="45dp"
-            android:textSize="11sp"/>
+            <ImageView
+                android:id="@+id/ivNotification"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginTop="22dp"
+                android:src="@drawable/baseline_notifications_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Botões Roxos Gerenciar Recompensas e Visualizar Fidelidades -->
+        <!-- Botão Adicionar Selos -->
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnGerenciarRecompensas"
-            style="@style/containedButtonLightPurple"
-            android:text="Gerenciar Recompensas"
-            app:layout_constraintTop_toBottomOf="@id/painel"
-            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/btnAddSelos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Adicionar Selos Cliente"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnVisualizarFidelidades"
-            style="@style/containedButtonLightPurple"
-            android:text="Visualizar Fidelidades"
-            app:layout_constraintTop_toBottomOf="@id/btnGerenciarRecompensas"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"/>
+            app:layout_constraintTop_toBottomOf="@id/painel" />
 
         <!-- Botão Sair -->
         <TextView
@@ -123,6 +91,5 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>

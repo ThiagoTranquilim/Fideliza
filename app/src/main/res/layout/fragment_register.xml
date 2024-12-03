@@ -90,7 +90,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCPF"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:maxLength="14"
+                android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,7 +136,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTelefone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:maxLength="15"
+                android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

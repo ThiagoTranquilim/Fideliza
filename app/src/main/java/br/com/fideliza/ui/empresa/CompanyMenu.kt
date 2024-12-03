@@ -44,11 +44,11 @@ class CompanyMenu : Fragment(), ServerCallback {
     }
 
     private fun setupNavigationButtons() {
-        binding.btnAddCliente.setOnClickListener { findNavController().navigate(R.id.action_companyMenu_to_registerNewCustomerFragment) }
+        //binding.btnAddCliente.setOnClickListener { findNavController().navigate(R.id.action_companyMenu_to_registerNewCustomerFragment) }
         binding.btnAddSelos.setOnClickListener { findNavController().navigate(R.id.action_companyMenu_to_addCustomerLabelFragment) }
         binding.ivProfile.setOnClickListener { findNavController().navigate(R.id.action_companyMenu_to_companyProfile) }
-        binding.btnGerenciarRecompensas.setOnClickListener { findNavController().navigate(R.id.action_companyMenu_to_rewardManagementFragment) }
-        binding.btnVisualizarFidelidades.setOnClickListener { findNavController().navigate(R.id.action_companyMenu_to_viewLoyaltyFragment) }
+        //binding.btnGerenciarRecompensas.setOnClickListener { findNavController().navigate(R.id.action_companyMenu_to_rewardManagementFragment) }
+        //binding.btnVisualizarFidelidades.setOnClickListener { findNavController().navigate(R.id.action_companyMenu_to_viewLoyaltyFragment) }
         binding.btnSair.setOnClickListener { parentFragmentManager.popBackStack() }
     }
 
