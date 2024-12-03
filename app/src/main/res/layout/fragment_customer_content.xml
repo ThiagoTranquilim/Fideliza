@@ -13,7 +13,7 @@
         android:padding="16dp"
         android:background="#E0E0E0">
 
-        <!-- Botões e conteúdo da parte cinza -->
+        <!-- Botões e conteúdo da parte cinza
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnProfile"
@@ -23,6 +23,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
+
+        -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

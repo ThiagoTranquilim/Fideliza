@@ -39,7 +39,7 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
         val btnLancarSelo = binding.btnLancarSelo
         val btnVoltar = binding.btnVoltar
         val etValor = binding.etValor
-        val etData = binding.etData
+        //val etData = binding.etData
         val etDescricao = binding.etDescricao
 
         ConexaoServidor.conexao("3;{ \"cpf\" : \"${cpf}\" };clientes", this)
@@ -47,15 +47,57 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
         // Ação ao clicar no botão "Lançar Selo"
         btnLancarSelo.setOnClickListener {
             val valor = etValor.text.toString()
-            val data = etData.text.toString()
             val descricao = etDescricao.text.toString()
 
-            val doc = Document()
-            doc.append("valor", valor).append("descricao", descricao)
+            if (valor.isEmpty() || descricao.isEmpty()) {
+                Toast.makeText(requireContext(), "Preencha todos os campos.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-            // Chamadas para o servidor
-            ConexaoServidor.conexao("2;${firebaseAuth.uid};${cpf};${doc.toJson()}", this@AddLabelCustomer)
+            // Exibir um AlertDialog para confirmação
+            val builder = android.app.AlertDialog.Builder(requireContext())
+            builder.setTitle("Confirmação")
+            builder.setMessage("Deseja realmente lançar o selo com os dados informados?\n\nValor: $valor\nDescrição: $descricao")
+
+            val result = android.app.AlertDialog.Builder(requireContext())
+
+            // Botão "Sim"
+            builder.setPositiveButton("Sim") { _, _ ->
+                val doc = Document()
+                doc.append("valor", valor).append("descricao", descricao)
+
+                // Chamadas para o servidor
+                ConexaoServidor.conexao("2;${firebaseAuth.uid};${cpf};${doc.toJson()}", this@AddLabelCustomer)
+
+                // Exibir uma mensagem de sucesso
+                Toast.makeText(requireContext(), "Selo lançado com sucesso", Toast.LENGTH_SHORT).show()
+
+                // Chama o método clearForm para limpar os campos
+                clearForm()
+
+                // Perguntar se deseja lançar outro selo
+                result.setTitle("Selo registrado")
+                result.setMessage("Deseja lançar outro selo?")
+                result.setPositiveButton("Sim") { _, _ ->
+                    // Limpar novamente os campos para um novo selo
+                    clearForm()
+                }
+                result.setNegativeButton("Não") { dialog, _ ->
+                    dialog.dismiss()
+                    parentFragmentManager.popBackStack()
+                }
+                result.create().show()
+            }
+
+            // Botão "Não"
+            builder.setNegativeButton("Não") { dialog, _ ->
+                dialog.dismiss()
+            }
+
+            // Exibir o diálogo
+            builder.create().show()
         }
+
 
         // Ação ao clicar no botão "Voltar"
         btnVoltar.setOnClickListener {
@@ -84,6 +126,14 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
             Log.e("ERRS", e.message.toString())
         }
     }
+    private fun clearForm() {
+        // Limpar os campos de texto
+        binding.etValor.text.clear()
+        binding.etDescricao.text.clear()
+        // Caso tenha outros campos, você pode adicionar aqui, por exemplo:
+        // binding.etData.text.clear()
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
