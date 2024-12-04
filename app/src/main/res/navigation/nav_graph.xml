@@ -229,5 +229,13 @@
         android:id="@+id/registerCompanyFragment"
         android:name="br.com.fideliza.ui.common.RegisterCompanyFragment"
         android:label="fragment_register_company"
-        tools:layout="@layout/fragment_register_company" />
+        tools:layout="@layout/fragment_register_company" >
+        <action
+            android:id="@+id/action_registerCompanyFragment_to_verificationFragment"
+            app:destination="@id/verificationFragment" />
+        <action
+            android:id="@+id/action_registerCompanyFragment_pop"
+            app:popUpTo="@id/registerCompanyFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

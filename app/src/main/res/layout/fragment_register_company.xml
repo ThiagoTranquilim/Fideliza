@@ -3,167 +3,180 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.common.RegisterCompanyFragment">
+    tools:context=".ui.common.RegisterCompanyFragment"
+    android:background="@drawable/background_gradient">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray">
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/txtCadastrarEmpresa"
+        <!-- Título com Logo -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contTXT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastrar Empresa"
-            android:textSize="24dp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="24dp">
 
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/logo_fideliza"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/txtCadastrarEmpresa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Cadastrar Empresa"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toEndOf="@id/ivLogo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Campo Nome da Empresa -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputNomeEmpresa"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:hint="Nome da Empresa"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:layout_constraintTop_toBottomOf="@id/txtCadastrarEmpresa"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginHorizontal="45dp"
-            app:hintEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:boxStrokeColor="@color/purple_secundary"
-            app:boxBackgroundMode="outline">
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/primary_blue"
+            app:layout_constraintTop_toBottomOf="@id/contTXT"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.85"
+            android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNomeEmpresa"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo CNPJ -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputCnpj"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:hint="CNPJ"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/primary_blue"
             app:layout_constraintTop_toBottomOf="@id/textInputNomeEmpresa"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginHorizontal="45dp"
-            app:hintEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:boxStrokeColor="@color/purple_secundary"
-            app:boxBackgroundMode="outline">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.85"
+            android:layout_marginTop="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCnpj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLength="18"/>
-
+                android:maxLength="18" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo Email -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputEmail"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:hint="Email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/primary_blue"
             app:layout_constraintTop_toBottomOf="@id/textInputCnpj"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginHorizontal="45dp"
-            app:hintEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:boxStrokeColor="@color/purple_secundary"
-            app:boxBackgroundMode="outline">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.85"
+            android:layout_marginTop="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmailCadastro"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo Senha -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputSenha"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:hint="Senha"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/primary_blue"
             app:layout_constraintTop_toBottomOf="@id/textInputEmail"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginHorizontal="45dp"
-            app:hintEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:boxStrokeColor="@color/purple_secundary"
-            app:boxBackgroundMode="outline">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.85"
+            android:layout_marginTop="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="textPassword"
                 android:id="@+id/etSenhaCadastro"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Campo Confirmar Senha -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputSenhaDenovo"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Digite a senha novamente"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="Confirme a Senha"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeColor="@color/primary_blue"
             app:layout_constraintTop_toBottomOf="@id/textInputSenha"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginHorizontal="45dp"
-            app:hintEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:boxStrokeColor="@color/purple_secundary"
-            app:boxBackgroundMode="outline">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.85"
+            android:layout_marginTop="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="textPassword"
                 android:id="@+id/etSenhaCadastroDenovo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <!-- Botão Cadastrar Empresa -->
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCadastrarEmpresa"
-            style="@style/containedButtonPurple"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primary_blue"
             android:text="Cadastrar Empresa"
-            android:layout_marginTop="25dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/textInputSenhaDenovo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.85" />
 
-        <Button
+        <!-- Botão Voltar -->
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnVoltar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Voltar"
-            android:textSize="12sp"
-            android:textColor="@color/black"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/primary_red"
+            android:text="Voltar"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/btnCadastrarEmpresa"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            style="@style/Widget.MaterialComponents.Button.TextButton" />
+            app:layout_constraintWidth_percent="0.85" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

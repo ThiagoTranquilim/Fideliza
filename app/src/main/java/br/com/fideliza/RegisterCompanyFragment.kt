@@ -132,6 +132,8 @@ class RegisterCompanyFragment : Fragment(), ServerCallback {
             Log.d("CadastroEmpresa", resposta)
             if (resposta.contains("Sucesso")) {
                 Toast.makeText(context, "Empresa cadastrada com sucesso!", Toast.LENGTH_SHORT).show()
+                val action = RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToVerificationFragment(firebaseUser.uid)
+                findNavController().navigate(action)
             } else {
                 Toast.makeText(context, "Falha ao cadastrar empresa: $resposta", Toast.LENGTH_SHORT).show()
             }
