@@ -39,7 +39,6 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
         val btnLancarSelo = binding.btnLancarSelo
         val btnVoltar = binding.btnVoltar
         val etValor = binding.etValor
-        //val etData = binding.etData
         val etDescricao = binding.etDescricao
 
         ConexaoServidor.conexao("3;{ \"cpf\" : \"${cpf}\" };clientes", this)
@@ -109,15 +108,16 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
         Log.i("Resp", resposta)
         try {
             if (resposta == "Sucesso") {
-                Toast.makeText(requireContext(), "Selo lançado com sucesso", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(requireContext(), "Selo lançado com sucesso", Toast.LENGTH_SHORT).show()
             } else {
                 ret = Document.parse(resposta)
                 Log.i("ParsedDocument", ret.toJson())
 
                 // Verifique se o fragmento está adicionado antes de atualizar o binding
                 if (isAdded) {
-                    binding.tvNomeCliente.text = ret.getString("nome") ?: "Nome não encontrado"
+                    val nomeCliente = ret.getString("nome") ?: "Nome não encontrado"
+                    Log.i("NomeCliente", nomeCliente) // Verificação do nome
+                    binding.tvNomeCliente.text = nomeCliente
                 } else {
                     Log.e("ERRS", "Fragment não está mais anexado à Activity")
                 }
@@ -128,8 +128,8 @@ class AddLabelCustomer : Fragment(R.layout.fragment_add_label_customer), ServerC
     }
     private fun clearForm() {
         // Limpar os campos de texto
-        binding.etValor.text.clear()
-        binding.etDescricao.text.clear()
+        binding.etValor.text!!.clear()
+        binding.etDescricao.text!!.clear()
         // Caso tenha outros campos, você pode adicionar aqui, por exemplo:
         // binding.etData.text.clear()
     }

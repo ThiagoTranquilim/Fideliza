@@ -41,7 +41,7 @@
             app:boxStrokeColor="@color/primary_blue"
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toStartOf="@id/btnBuscar">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCPF"
@@ -53,21 +53,20 @@
                 android:textColorHint="@color/medium_gray" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Botão de busca -->
         <ImageButton
             android:id="@+id/btnBuscar"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/primary_blue"
             android:background="@drawable/circle_background"
-            android:elevation="8dp"
             android:padding="8dp"
             android:src="@drawable/baseline_search_24"
             android:contentDescription="Buscar"
-            app:tint="@color/primary_blue"
+            app:tint="@android:color/white"
             app:layout_constraintStart_toEndOf="@id/textInputCPFSearch"
             app:layout_constraintTop_toTopOf="@id/textInputCPFSearch"
+            app:layout_constraintBottom_toBottomOf="@id/textInputCPFSearch"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Lista de clientes -->
@@ -76,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="24dp"
-            android:background="@android:color/white"
+            android:background="@android:color/transparent"
             app:layout_constraintTop_toBottomOf="@id/textInputCPFSearch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

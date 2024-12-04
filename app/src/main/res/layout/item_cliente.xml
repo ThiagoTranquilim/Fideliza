@@ -1,21 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/card_background"
+    android:elevation="4dp">
 
-    <!-- Outras informações do cliente, como nome, cpf, etc -->
+    <!-- Nome do cliente -->
     <TextView
         android:id="@+id/tvNome"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nome do Cliente" />
+        android:text="Nome do Cliente"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp" />
 
+    <!-- Botão adicionar ponto -->
     <Button
         android:id="@+id/btnAdicionarPonto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar Ponto" />
+        android:backgroundTint="@color/primary_blue"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Adicionar Ponto"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
 </LinearLayout>
