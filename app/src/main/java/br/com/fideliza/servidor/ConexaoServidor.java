@@ -22,7 +22,7 @@ public class ConexaoServidor {
 
                 try {
                     // Conecta ao servidor
-                    socket = new Socket("172.16.230.30", 12345);
+                    socket = new Socket("54.94.21.251", 12345);
 
                     // Inicializa os leitores e escritores
                     servidorReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

@@ -34,19 +34,9 @@ class ProfileAdapter(private val list: List<Document>) : RecyclerView.Adapter<Pr
         holder.btnLogout.setOnClickListener { view ->
             val firebaseAuth = FirebaseAuth.getInstance()
             firebaseAuth.signOut()
+            val navController = view.findNavController()
+            navController.navigateUp()
 
-            try {
-                // Verifica o estado atual do NavController
-                val navController = view.findNavController()
-                if (navController.currentDestination?.id == R.id.Profile) {
-                    navController.navigate(R.id.action_Profile_to_loginFragment)
-                } else {
-                    Toast.makeText(view.context, "Erro: Destino atual inválido para navegação.", Toast.LENGTH_LONG).show()
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Toast.makeText(view.context, "Erro ao navegar: ${e.message}", Toast.LENGTH_LONG).show()
-            }
         }
     }
 
