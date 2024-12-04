@@ -42,7 +42,7 @@ class LoginFragment : Fragment(), ServerCallback {
         binding.etEmail.text?.clear()
         binding.etSenha.text?.clear()
 
-        binding.Cadastrar.setOnClickListener {
+        binding.btnCadastrar.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 

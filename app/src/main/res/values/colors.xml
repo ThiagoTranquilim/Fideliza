@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="purple_primary">#9747FF</color>
-    <color name="gray">#E6E6E6</color>
-    <color name="green_primary">#14AE5C</color>
-    <color name="purple_secundary">#E4CCFF</color>
+    <!-- Primary Colors -->
+    <color name="primary_blue">#2196F3</color>
+    <color name="primary_red">#FF5252</color>
+    <color name="primary_green">#4CAF50</color>
+    <color name="primary_yellow">#FFC107</color>
+    <color name="primary_purple">#9C27B0</color>
+    <color name="primary_orange">#FF9800</color>
+    <color name="primary_pink">#E91E63</color>
+
+    <!-- Pastel Colors -->
+    <color name="pastel_blue">#90CAF9</color>
+    <color name="pastel_green">#A5D6A7</color>
+    <color name="pastel_pink">#F48FB1</color>
+    <color name="pastel_yellow">#FFF59D</color>
+    <color name="pastel_purple">#CE93D8</color>
+    <color name="pastel_orange">#FFCC80</color>
+
+    <!-- Neutral Colors -->
+    <color name="dark_gray">#212121</color>
+    <color name="medium_gray">#9E9E9E</color>
+    <color name="light_gray">#E0E0E0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <!-- Gradient Helpers -->
+    <color name="gradient_blue_purple_start">#2196F3</color>
+    <color name="gradient_blue_purple_end">#9C27B0</color>
+    <color name="gradient_red_yellow_start">#FF5252</color>
+    <color name="gradient_red_yellow_end">#FFC107</color>
+    <color name="gradient_green_blue_start">#4CAF50</color>
+    <color name="gradient_green_blue_end">#2196F3</color>
+    <color name="gradient_orange_red_start">#FF9800</color>
+    <color name="gradient_orange_red_end">#FF5252</color>
+
+    <!-- Elegant Colors -->
+    <color name="teal_primary">#009688</color>
+    <color name="indigo_deep">#3F51B5</color>
+    <color name="amber_glow">#FFC107</color>
+    <color name="brown_earth">#795548</color>
+    <color name="gray_blue">#607D8B</color>
+    <color name="blue_primary">#2196F3</color>
+    <color name="purple_primary">#9C27B0</color> <!-- Escolha a cor que deseja -->
+
+
+    <color name="green_primary">#4CAF50</color> <!-- Substitua pelo valor real -->
+    <color name="purple_secundary">#9C27B0</color> <!-- Substitua pelo valor real -->
+    <color name="gray">#E0E0E0</color> <!-- Substitua pelo valor real -->
 </resources>
