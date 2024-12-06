@@ -14,35 +14,24 @@
         <!-- Título com Logo -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/contTXT"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="24dp">
 
-            <ImageView
-                android:id="@+id/ivLogo"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/logo_fideliza"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
             <TextView
-                android:id="@+id/txtCadastrarEmpresa"
-                android:layout_width="0dp"
+                android:id="@+id/txtCadastrarSe"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cadastrar Empresa"
-                android:textSize="22sp"
+                android:text="Cadastrar-se"
+                android:textSize="26sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 app:layout_constraintStart_toEndOf="@id/ivLogo"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Campo Nome da Empresa -->
@@ -177,6 +166,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintWidth_percent="0.85" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/logo_fideliza"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="16dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
